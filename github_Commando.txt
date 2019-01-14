@@ -1,0 +1,162 @@
+Microsoft Windows [Version 10.0.17763.195]
+(c) 2018 Microsoft Corporation. All rights reserved.
+
+C:\Users\cursist>cd c:\
+
+c:\>md c:\flexidate
+
+c:\>cd flexidate
+
+c:\flexidate>git init
+Initialized empty Git repository in c:/flexidate/.git/
+
+c:\flexidate>dir
+ Volume in drive C is Windows
+ Volume Serial Number is 1A53-6E1B
+
+ Directory of c:\flexidate
+
+14/01/2019  15:23    <DIR>          .
+14/01/2019  15:23    <DIR>          ..
+               0 File(s)              0 bytes
+               2 Dir(s)  828 238 024 704 bytes free
+
+c:\flexidate>git status
+On branch master
+
+No commits yet
+
+nothing to commit (create/copy files and use "git add" to track)
+
+c:\flexidate>git clone https://github.com/IanDeM/flexidate.git
+Cloning into 'flexidate'...
+remote: Enumerating objects: 62, done.
+remote: Counting objects: 100% (62/62), done.
+remote: Compressing objects: 100% (48/48), done.
+remote: Total 62 (delta 13), reused 59 (delta 10), pack-reused 0
+Unpacking objects: 100% (62/62), done.
+
+c:\flexidate>git status
+On branch master
+
+No commits yet
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+        flexidate/
+
+nothing added to commit but untracked files present (use "git add" to track)
+
+c:\flexidate>git add .
+warning: adding embedded git repository: flexidate
+hint: You've added another git repository inside your current repository.
+hint: Clones of the outer repository will not contain the contents of
+hint: the embedded repository and will not know how to obtain it.
+hint: If you meant to add a submodule, use:
+hint:
+hint:   git submodule add <url> flexidate
+hint:
+hint: If you added this path by mistake, you can remove it from the
+hint: index with:
+hint:
+hint:   git rm --cached flexidate
+hint:
+hint: See "git help submodule" for more information.
+
+c:\flexidate>git status
+On branch master
+
+No commits yet
+
+Changes to be committed:
+  (use "git rm --cached <file>..." to unstage)
+
+        new file:   flexidate
+
+
+c:\flexidate>git commit -m "Flexi gecloned"
+[master (root-commit) 4d671f1] Flexi gecloned
+ 1 file changed, 1 insertion(+)
+ create mode 160000 flexidate
+
+c:\flexidate>git status
+On branch master
+nothing to commit, working tree clean
+
+c:\flexidate>git remote
+
+c:\flexidate>git status
+On branch master
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+  (commit or discard the untracked or modified content in submodules)
+
+        modified:   flexidate (modified content)
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+c:\flexidate>cd c:\flexidate\flexidate
+
+c:\flexidate\flexidate>git status
+On branch master
+Your branch is up to date with 'origin/master'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+        modified:   index.html
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+c:\flexidate\flexidate>git add .
+
+c:\flexidate\flexidate>git status
+On branch master
+Your branch is up to date with 'origin/master'.
+
+Changes to be committed:
+  (use "git reset HEAD <file>..." to unstage)
+
+        modified:   index.html
+
+
+c:\flexidate\flexidate>git commit -m "Defi"
+[master b344b10] Defi
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+c:\flexidate\flexidate>git status
+On branch master
+Your branch is ahead of 'origin/master' by 1 commit.
+  (use "git push" to publish your local commits)
+
+nothing to commit, working tree clean
+
+c:\flexidate\flexidate>git remote
+origin
+
+c:\flexidate\flexidate>git push origin master
+Logon failed, use ctrl+c to cancel basic credential prompt.
+Username for 'https://github.com': YoerikDejans
+Password for 'https://YoerikDejans@github.com':
+remote: Permission to IanDeM/flexidate.git denied to YoerikDejans.
+fatal: unable to access 'https://github.com/IanDeM/flexidate.git/': The requested URL returned error: 403
+
+c:\flexidate\flexidate>git push origin master
+remote: Permission to IanDeM/flexidate.git denied to YoerikDejans.
+fatal: unable to access 'https://github.com/IanDeM/flexidate.git/': The requested URL returned error: 403
+
+c:\flexidate\flexidate>git push origin master
+Enumerating objects: 5, done.
+Counting objects: 100% (5/5), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (3/3), 311 bytes | 311.00 KiB/s, done.
+Total 3 (delta 2), reused 0 (delta 0)
+remote: Resolving deltas: 100% (2/2), completed with 2 local objects.
+To https://github.com/IanDeM/flexidate.git
+   4cec40a..b344b10  master -> master
+
+c:\flexidate\flexidate>
