@@ -1,20 +1,71 @@
-
 <!DOCTYPE html>
-<html lang="en">     
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Flexi Scrum demo FlexiDating</title>
     <link href="css/api.css" rel="stylesheet"/>
+    <script src="js/index.js"></script>
 </head>
 <body>
-<h1>Definitieve aanpassing</h1>
 <script src="js/jquery.min.js"></script>
 <script async src="js/flexi_scrum.min.js"></script>
+
+<!--container-->
+<div id="containerSite">
+
+    <!--header-->
+    <header id="header">
+        <!--header left banner-->
+        <section id="banner"></section>
+        <!--header right opvulling kleur en knop-->
+        <aside id="menuTopRight">
+            <button id="deKnop14b">Inschrijven</button>
+        </aside>
+    </header>
+    <!--end header-->
+
+    <!--midden twee kolommen met links fade en rechts gegevensvenster-->
+    <div id="midden">
+        <!--kolom1 fadekleur, manWoman logo -->
+        <section id="column1">
+            <img id="manwoman" src="img/man-woman-symbol.png">
+        </section>
+        <!--kolom2 gegevensvenster-->
+        <section id="column2">
+            <!--container gegevens-->
+            <div id="containerLogin">
+                <!--venster login, visible of unvisible-->
+                <div id="loginOptie"><label id="loginLabel">Login</label><br><input type="text" name="login_email"
+                                                                                    id="login_email"
+                                                                                    placeholder="email"><br><input
+                        type="text" name="login_pw" id="login_pw" placeholder="wachtwoord">
+                </div>
+                <!--venster inschrijven, visible of invisible-->
+                <div id="inschijvenOptie">
+                    <label id="inschrijvenLabel">Inschrijven</label><br>
+                    <input
+                            type="text" name="email" id="email" placeholder="email"><br>
+                    <input
+                            type="text" name="nickname" id="nickname" placeholder="nickname"><br>
+                    <input
+                            type="text" name="wachtwoord" id="wachtwoord" placeholder="wachtwoord">
+
+                </div>
+                <!--knop inloggen-->
+                <button id="deKnop14">Inloggen</button>
+            </div>
+            <!--end container gegevens-->
+        </section>
+        <!--end midden-->
+    </div>
+    <footer id="footer"><p>Copyright</p></p></footer>
+</div>
 
 
 <script defer>
     window.onload = function () {
         console.log(scrumlib.getAllDatasets());
+
     }
 </script>
 </body>
