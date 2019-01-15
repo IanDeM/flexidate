@@ -1,0 +1,140 @@
+#column1 {
+    display: inline-block;
+    float: left;
+    width: 60%;
+    background-image: linear-gradient(to left, rgba(255, 0, 0, 0), rgba(78, 96, 120, 1));
+    height: inherit;
+    text-align: center;
+}
+
+#column2 {
+    display: inline-block;
+    float: left;
+    width: 40%;
+    background-color: white;
+    height: inherit;
+}
+
+#containerSite {
+    width: auto;
+    color: rgb(78, 96, 120);
+    font-family: "Times New Roman", Times, serif;
+}
+
+#header {
+    height: 150px;
+    border-bottom: white solid 1px;
+}
+
+#banner {
+    float: left;
+    width: 60%;
+    background: url("../img/flexidatingBanner.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: inherit;
+}
+
+#menuTopRight {
+    float: left;
+    width: 40%;
+    background-color: rgb(78, 96, 120);
+    height: inherit;
+    position: relative;
+}
+
+#deKnop14b {
+    background-color: white;
+    color: rgb(78, 96, 120);
+    width: 120px;
+    border-radius: 20px;
+    border: none;
+    padding: 10px;
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+}
+
+#manwoman {
+    padding-top: 7%;
+}
+
+#containerLogin {
+    /*border: 8px outset rgb(78, 96, 120);*/
+    border-style: solid;
+    border-width: 8px;
+    border-top-color: rgb(78, 96, 120);
+    border-left-color: rgb(78, 96, 120);
+    border-right-color: rgba(78, 96, 120, 0.5);
+    border-bottom-color: rgba(78, 96, 120, 0.5);
+    border-radius: 20px;
+    height: 80%;
+    margin: 10% 20%;
+    position: relative;
+    text-align: center;
+}
+
+#loginLabel {
+    display: inline-block;
+    margin-top: 20%;
+    margin-bottom: 10%;
+    font-size: 2em;
+    font-weight: bold;
+}
+
+#inschrijvenLabel {
+    display: inline-block;
+    margin-top: 20%;
+    margin-bottom: 10%;
+    font-size: 2em;
+    font-weight: bold;
+}
+
+#loginOptie {
+    display: none;
+}
+
+#login_email {
+    display: inline-block;
+    margin-bottom: 10%;
+}
+
+#email {
+    display: inline-block;
+    margin-bottom: 10%;
+}
+
+#nickname {
+    display: inline-block;
+    margin-bottom: 10%;
+}
+
+#deKnop14 {
+    border-style: none;
+    width: 120px;
+    padding: 10px;
+    border-radius: 20px;
+    background-color: rgb(78, 96, 120);
+    color: white;
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+}
+
+#footer {
+    clear: both;
+    text-align: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+#footer p {
+    margin-top: 0px;
+}
+
+#midden {
+    clear: both;
+    height: 500px;
+    border-bottom: 2px solid white;
+
+}
