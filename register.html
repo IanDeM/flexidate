@@ -48,23 +48,46 @@
 			var jobject =scrumlib.getDatasetsByConditions(condition);
 			//console.log(jobject);
 			//console.log(jobject.length);
-			if  (jobject.length == 0)
-			{
-				alert("Nieuwe Registratie");				   
-			}
-			else
+			
+			if  (jobject.length != 0)
 			{
 				alert("Registratie met dit email adres is reeds gebeurd (paswoord vergeten)");
 			}
-			console.log(login_pw1);
-			console.log(login_pw2);
-			if (login_pw1 == "" || login_pw2 == "")
+			console.log(login_pw1.value);
+			console.log(login_pw2.value);
+			if (login_pw1.value == "" || login_pw2.value == "")
 			{ 
 			    alert("Gelieve beide paswoorden in te vullen");
 			}
-			if (login_pw1 != login_pw2 )
+			if (login_pw1.value != login_pw2.value )
 			{ 
-			    alert("Beide paswoorden moeten ingevult zijn.");
+			    alert("Beide paswoorden moeten gelijk zijn.");
+			}
+			
+			if ( jobject.length == 0 && login_pw1.value == login_pw2.value && login_pw1.value != "" && login_pw2.value != "")
+			{
+			   
+				   var new_profiel = {
+					beroep: "avonturier",
+					email: "zorro@hacienda.mex",
+					familienaam: "De La Vega",
+					foto: "zorro.jpg",
+					geboortedatum: "1944-2-2",
+					gewicht: 74,
+					grootte: 180,
+					haarkleur: "zwart",
+					nickname: "Zorro",
+					oogkleur: "bruin",
+					sexe: "m",
+					voornaam: "Diego"
+				};
+
+				//console.log(scrumlib.createDataset(new_profiel));
+				var jnewobject =scrumlib.createDataset(new_profiel);
+				scrumlib.save();
+				console.log(scrumlib.getAllDatasets());
+			   
+			   
 			}
 			
         })
