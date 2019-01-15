@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+</head>
+<body>
+    <footer>Volgende pagina</footer>
+</div>
+<script src="js/jquery.min.js"></script>
+<script async src="js/flexi_scrum_2.1.0.min.js"></script>
+<script defer>
+
+    var libversie, deKnop1, deKnop2, deKnop3, deKnop4, deKnop5, deKnop6, deKnop7, deKnop7bis, deKnop8, deKnop8bis, deKnop9, deKnop10, deKnop11, deKnop12, deKnop13, deKnop14, deKnop15;
+    var zoek_id, zoek_naam, zoek_haarkleur, zoek_sexe, zoek_sexvoorkeur, login_email, login_pw;
+
+    window.onload = function () {
+
+	    alert(localStorage.ingelogd);
+
+        //scrumlib.init('test');
+        //scrumlib.init();
+        //output
+        libversie = document.getElementById('libversie');
+        //knoppen
+        //deKnop0 = document.getElementById('deKnop0');
+        deKnop1 = document.getElementById('deKnop1');
+        deKnop2 = document.getElementById('deKnop2');
+        deKnop3 = document.getElementById('deKnop3');
+        deKnop4 = document.getElementById('deKnop4');
+        deKnop5 = document.getElementById('deKnop5');
+        deKnop6 = document.getElementById('deKnop6');
+        deKnop7 = document.getElementById('deKnop7');
+        deKnop7bis = document.getElementById('deKnop7bis');
+        deKnop8 = document.getElementById('deKnop8');
+        deKnop8bis = document.getElementById('deKnop8bis');
+        deKnop9 = document.getElementById('deKnop9');
+        deKnop10 = document.getElementById('deKnop10');
+        deKnop11 = document.getElementById('deKnop11');
+        deKnop12 = document.getElementById('deKnop12');
+        deKnop13 = document.getElementById('deKnop13');
+        deKnop14 = document.getElementById('deKnop14');
+        deKnop15 = document.getElementById('deKnop15');
+		
+        //form velden
+        zoek_id = document.getElementById('zoek_id');
+        zoek_naam = document.getElementById('zoek_naam');
+        zoek_sexe = document.getElementById('zoek_sexe');
+        zoek_haarkleur = document.getElementById('zoek_haarkleur');
+        zoek_grootte = document.getElementById('zoek_grootte');
+        zoek_datum = document.getElementById('zoek_datum');
+        new_name = document.getElementById('new_name');
+        wis_id = document.getElementById('wis_id');
+        login_email = document.getElementById('login_email');
+        login_pw = document.getElementById('login_pw');
+        zoek_lovecoin = document.getElementById('zoek_lovecoin');
+
+       //libversie
+     //   libversie.innerHTML = scrumlib.speak();
+
+		
+        deKnop14.addEventListener('click', function (e) {
+            //login return id of false
+
+            console.log(scrumlib.login(login_email.value, login_pw.value));
+        })
+}
+</script>
+</body>
+</html>
+
+
