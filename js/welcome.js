@@ -52,7 +52,7 @@ function submitButton(bottom) {
         var ingelogd = false;
         ingelogd = scrumlib.login(login_email, login_pw);
         if (ingelogd == false) {
-            //alert("opnieuw inloggen");
+            alert("Verkeerde username en/of paswoord");
             //var local_ingelogd = localStorage['ingelogd'];
             localStorage.removeItem('ingelogd');
         }
