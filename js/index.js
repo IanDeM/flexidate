@@ -1,6 +1,6 @@
 window.onload = function () {
-    console.log(scrumlib.getAllDatasets());
-    console.log("js geladen");
+    //console.log(scrumlib.getAllDatasets());
+    //console.log("js geladen");
 
     var zoek_id = document.getElementById('zoek_id');
     var zoek_index = document.getElementById('zoek_index');
@@ -10,9 +10,9 @@ window.onload = function () {
     var zoek_grootte = document.getElementById('zoek_grootte');
     var zoek_datum = document.getElementById('zoek_datum');
 
-    console.log(scrumlib.getAllDatasets());
+    //console.log(scrumlib.getAllDatasets());
 
-    console.log("js onload overzicht");
+    //console.log("js onload overzicht");
 
     var buttonProfiel = document.querySelector('#deKnop17');
     buttonProfiel.addEventListener('click', function () {
@@ -24,19 +24,56 @@ window.onload = function () {
         submitLogoff()
     });
 
-    loadProfiles();
-
-    setSearchVisibility(scrumlib.getDatasetById(localStorage.getItem("ingelogd")));
+    
+    var loggedUser = scrumlib.getDatasetById(localStorage.getItem("ingelogd"));
+    setSearchVisibility(loggedUser);
+	//console.log(scrumlib.getDatasetById(localStorage.getItem("ingelogd")));
     /*toonVoortgangProfiel(scrumlib.getDatasetById(localStorage.getItem("ingelogd")));*/
 
+	var filteredSet = scrumlib.getAllDatasets();
+	
 
+    //console.log(filteredSet);
+
+    var myNode = document.getElementById("containerOverzicht");
+    while (myNode.firstChild) {
+        myNode.removeChild(myNode.firstChild);
+    }
+    var eContainer=document.getElementById("containerOverzicht");
+    var eUl = document.createElement('div');
+    //jsObject = JSON.parse(localStorage.flexidata);
+	jsObject = filteredSet;
+    var aantal = jsObject.length;
+    for(var i=0;i<aantal;i++){
+        //console.log(i);
+        var eLi = document.createElement('beeld');
+
+        eElem = jsObject[i];
+
+        fichier = "img/" + eElem.foto;
+
+        eLi.innerHTML= "<img width='100' src=" + fichier + " onclick=clickPhoto('" + eElem._id +"') alt='Geen foto' title='"+ eElem.nickname +"'>";
+
+        eUl.appendChild(eLi);
+    }
+    eContainer.appendChild(eUl);
+    eContainer.style.display = 'inline';
+
+	
+	
+
+	
+	
+	
+	
+ 
     var deKnop16 = document.getElementById('deKnop16');
 
 
     deKnop16.addEventListener('click', function () {
 
         var aAllDatasets = scrumlib.getAllDatasets();
-        console.log(aAllDatasets);
+       // console.log(aAllDatasets);
         var idSet = scrumlib.getDatasetById(zoek_id.value);
         var filteredSet = aAllDatasets;
 
@@ -48,7 +85,7 @@ window.onload = function () {
         var match = (fuzzy === true) ? "~" : "=";
         var condition = {voornaam: {"waarde": zoek_voornaam.value, "match": match}};
         var voornaamSet = scrumlib.getDatasetsByConditions(condition);
-        console.log(voornaamSet);
+        //console.log(voornaamSet);
 
         if ((voornaamSet.length !== 0) /*&& (fuzzy.disabled===false) && (zoek_voornaam.disabled === false)*/) {
             filteredSet = filterSearchResults(filteredSet, voornaamSet);
@@ -85,10 +122,66 @@ window.onload = function () {
             filteredSet = filterSearchResults(filteredSet, gebDatumSet);
         }
 
-        console.log(filteredSet);
-    });
+  //      console.log(filteredSet);
+
+        var myNode = document.getElementById("containerOverzicht");
+		while (myNode.firstChild) {
+			myNode.removeChild(myNode.firstChild);
+		}
+		var eContainer=document.getElementById("containerOverzicht");
+		var eUl = document.createElement('div');
+		//jsObject = JSON.parse(localStorage.flexidata);
+		jsObject = filteredSet;
+		var aantal = jsObject.length;
+		for(var i=0;i<aantal;i++){
+			//console.log(i);
+			var eLi = document.createElement('beeld');
+
+			eElem = jsObject[i];
+
+			fichier = "img/" + eElem.foto;
+
+			eLi.innerHTML= "<img width='100' src=" + fichier + " onclick=clickPhoto('" + eElem._id +"') alt='Geen foto' title='"+ eElem.nickname +"'>";
+
+			eUl.appendChild(eLi);
+		}
+		eContainer.appendChild(eUl);
+		eContainer.style.display = 'inline';
+			
+			
+		});
 
 };
+
+
+function submitProfiel() {
+    console.log("submitProfiel");
+
+    localStorage.setItem ("detailID",localStorage.getItem("ingelogd"));
+    localStorage.setItem ("switchup","1");
+
+    location.href = "mijnprofiel.html";
+}
+
+function submitLogoff() {
+    console.log("submitLogoff");
+
+    localStorage.removeItem("ingelogd");
+    window.open("index.html","_self");
+}
+
+
+
+function clickPhoto(local_id) {
+    console.log("Toon detail voor " + local_id );
+
+    localStorage.setItem ("detailID",local_id);
+    localStorage.setItem ("switchup","0");
+
+    location.href = "mijnprofiel.html";
+}
+
+
 
 function setSearchVisibility(loggedUser) {
     var oUser = loggedUser[0];
