@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+<style>
+body  {
+  background-image: url("img/man-woman-symbol.png");
+  background-color: #cccccc;
+}
+.center-div
+{
+     margin: 0 auto;
+     width: 100px; 
+}
+
+</style>
+</head>
+
+<body>
+<div class="wrapper">
+    <div class="center-div">
+       <section id="detailprofiel">
+			<BR>
+	        <div id="zoek" >
+                <p>
+				    <table id="protabel" bgcolor="#cccccc"> 
+					<tr><td>id profiel</td><td><label id="idprofile">idprofile</label></tr>
+					<tr><td>familienaam</td><td><label id="familienaam">familienaam</label></tr>
+					<tr><td>voornaam</td><td><label id="voornaam">voornaam</label></tr>
+					<tr><td>nickname</td><td><label id="nickname">nickname</label></tr>
+					<tr><td>geboortedatum</td><td><label id="geboortedatum">geboortedatum</label></tr>
+					<tr><td>email</td><td><label id="email">email</label></tr>
+					<tr><td>nickname</td><td><label id="nickname">nickname</label></tr>
+					<tr><td>foto</td><td><img id="foto" height="42" width="42"></img></tr>
+					<tr><td>beroep</td><td><label id="beroep">beroep</label></tr>
+					<tr><td>geslacht</td><td><label id="geslacht">geslacht</label></tr>
+					<tr><td>haarkleur</td><td><label id="haarkleur">haarkleur</label></tr>
+					<tr><td>oogkleur</td><td><label id="oogkleur">oogkleur</label></tr>
+					<tr><td>grootte</td><td><label id="grootte">grootte</label></tr>
+					<tr><td>gewicht</td><td><label id="gewicht">gewicht</label></tr>
+					<tr><td>wachtwoord</td><td><label id="wachtwoord">wachtwoord</label></tr>
+					</table>
+                </p>
+				<p>
+					<button type=button id="ID_Sluiten">Sluiten</button>
+				</p>
+            </div>
+        </section>
+    </div>
+    
+</div>
+<script src="js/jquery.min.js"></script>
+<script async src="js/flexi_scrum_2.1.0.min.js"></script>
+<script defer>
+
+    var libversie, deKnop14,deKnop15;
+    var login_email, login_pw;
+
+    window.onload = function () {
+	
+        
+        libversie = document.getElementById('libversie');
+		var local_ingelogd = localStorage['ingelogd'];
+		//alert(local_ingelogd);
+		console.log(scrumlib.getDatasetById(local_ingelogd));
+		var jobject = scrumlib.getDatasetById(local_ingelogd);
+		if  (jobject.length != 0)
+		{
+			// alert("gevonden");
+			 document.getElementById('idprofile').innerHTML = jobject[0]._id;
+			 document.getElementById('familienaam').innerHTML = jobject[0].familienaam;
+			 document.getElementById('voornaam').innerHTML = jobject[0].voornaam;
+			 document.getElementById('nickname').innerHTML = jobject[0].nickname;
+			 document.getElementById('geboortedatum').innerHTML = jobject[0].geboortedatum;
+			 document.getElementById('email').innerHTML = jobject[0].email;
+			 //document.getElementById('foto').innerHTML = jobject[0].foto;
+			 document.getElementById('foto').src = "img/"+jobject[0].foto;
+			 
+			 document.getElementById('beroep').innerHTML = jobject[0].beroep;
+			 if (jobject[0].sexe == 'v')
+			 {
+				document.getElementById('geslacht').innerHTML = "Vrouw";
+			 }
+			 if (jobject[0].sexe == 'm')
+			 {
+				document.getElementById('geslacht').innerHTML = "Man";
+			 }
+			 
+			 document.getElementById('oogkleur').innerHTML = jobject[0].oogkleur;
+			 document.getElementById('haarkleur').innerHTML = jobject[0].haarkleur;
+			 document.getElementById('grootte').innerHTML = jobject[0].grootte + " cm";
+			 document.getElementById('gewicht').innerHTML = jobject[0].gewicht + " kg";
+			 document.getElementById('wachtwoord').innerHTML = jobject[0].wachtwoord;
+			 
+			 
+		}
+		else
+		{
+			alert("Onbestaand profiel !!!");
+		}
+		
+		
+}
+</script>
+</body>
+</html>
