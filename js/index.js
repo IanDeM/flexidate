@@ -155,7 +155,7 @@ window.onload = function () {
 
 
 function submitProfiel() {
-    console.log("submitProfiel");
+    //console.log("submitProfiel");
 
     localStorage.setItem ("detailID",localStorage.getItem("ingelogd"));
     localStorage.setItem ("switchup","1");
@@ -164,16 +164,16 @@ function submitProfiel() {
 }
 
 function submitLogoff() {
-    console.log("submitLogoff");
+    //console.log("submitLogoff");
 
     localStorage.removeItem("ingelogd");
     window.open("index.html","_self");
 }
-
+ 
 
 
 function clickPhoto(local_id) {
-    console.log("Toon detail voor " + local_id );
+    //console.log("Toon detail voor " + local_id );
 
     localStorage.setItem ("detailID",local_id);
     localStorage.setItem ("switchup","0");
