@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Flexi Scrum demo FlexiDating</title>
+    <link href="css/index.css" rel="stylesheet"/>
+    <!-- <script src="js/index.js"></script> -->
+  
+    <script type="text/javascript" src="js/profielen.json"></script>
+    <script> 
+        var libversie, deKnop14,deKnop15;
+        var login_email, login_pw;
+
+    window.onload = function () {
+
+        libversie = document.getElementById('libversie');
+		var local_ingelogd = localStorage['ingelogd'];
+		//alert(local_ingelogd);
+		console.log(scrumlib.getDatasetById(local_ingelogd));
+		var jobject = scrumlib.getDatasetById(local_ingelogd);
+		if  (jobject.length != 0)
+		{
+            // alert("gevonden");
+            document.getElementById("_id").value = jobject[0]._id;
+            document.getElementById("familienaam").value = jobject[0].familienaam;
+            document.getElementById("naam").value = jobject[0].voornaam;
+            document.getElementById("geboortedatum").value = jobject[0].geboortedatum;
+            document.getElementById("mailadres").value = jobject[0].email;
+            document.getElementById("nickname").value = jobject[0].nickname;            
+            document.getElementById("foto").src = "img/" + jobject[0].foto;            
+            document.getElementById("beroep").value = jobject[0].beroep;
+            document.getElementById("sexe").value = jobject[0].sexe;            
+            document.getElementById("oogkleur").value = jobject[0].oogkleur;
+            document.getElementById("grootte").value = jobject[0].grootte;
+            document.getElementById("gewicht").value = jobject[0].gewicht;
+            document.getElementById("wachtwoord").value = jobject[0].wachtwoord;  		 
+			 
+		}
+		else
+		{
+			alert("Onbestaand profiel !!!");
+        }
+        
+        var knop_update = document.getElementById('opslaan');
+        knop_update.addEventListener('click', opslaan);
+        
+    } // einde windows onload
+
+
+    
+    // opslaan van de aangepaste gegevens in de local storage
+    function opslaan(){   
+        localStorage.setItem("familienaam", document.getElementById('familienaam').value); 
+        localStorage.setItem("voornaam", document.getElementById('naam').value);
+        localStorage.setItem("geboortedatum", document.getElementById('geboortedatum').value);
+        localStorage.setItem("mailadres", document.getElementById('mailadres').value);
+        localStorage.setItem("nickname", document.getElementById('nickname').value);
+        //localStorage.setItem("foto", document.getElementById('foto').src);  //*** Dit een uitbreiding?
+        localStorage.setItem("beroep", document.getElementById('beroep').value);
+        localStorage.setItem("sexe", document.getElementById('sexe').value);
+        localStorage.setItem("oogkleur", document.getElementById('oogkleur').value);
+        localStorage.setItem("grootte", document.getElementById('grootte').value);
+        localStorage.setItem("gewicht", document.getElementById('gewicht').value);
+        localStorage.setItem("wachtwoord", document.getElementById('wachtwoord').value);
+        localStorage.setItem("_id", document.getElementById('_id').value);
+
+        // de ingevulde velden via updatemap wegschrijven naar localstorage
+        var updateMap = {};           
+
+                updateMap.familienaam = document.getElementById("familienaam").value;
+                updateMap.voornaam = document.getElementById("naam").value;
+                updateMap.geboortedatum = document.getElementById("geboortedatum").value;
+                updateMap.email = document.getElementById("mailadres").value;
+                updateMap.nickname = document.getElementById("nickname").value;
+               // updateMap.foto = document.getElementById("foto").value;
+                updateMap.beroep = document.getElementById("beroep").value;
+                updateMap.sexe = document.getElementById("sexe").value;
+                updateMap.oogkleur = document.getElementById("oogkleur").value;
+                updateMap.grootte = document.getElementById("grootte").value;
+                updateMap.gewicht = document.getElementById("gewicht").value;
+                updateMap.wachtwoord = document.getElementById("wachtwoord").value;
+                // wegschrijven van de data naar de local storage
+                scrumlib.updateDataset(localStorage.getItem("_id", document.getElementById('_id').value), updateMap);              
+
+
+        scrumlib.save();
+    }
+    </script>    
+    
+    
+</head>
+<body>
+<script src="js/jquery.min.js"></script>
+<script async src="js/flexi_scrum.min.js"></script>
+
+<!--container-->
+<div id="containerSite">
+
+    <!--header-->
+    <header id="header">
+        <!--header left banner-->
+        <section id="banner"></section>
+        <!--header right opvulling kleur en knop-->
+        <aside id="menuTopRight">
+            <button id="deKnop14b">Inschrijven</button>
+        </aside>
+    </header>
+    <!--end header-->
+
+    <!--midden twee kolommen met links fade en rechts gegevensvenster-->
+    <div id="midden">
+        <!--kolom1 fadekleur, manWoman logo -->
+        <section id="column1">
+            <!-- afbeelding eventueel veranderen naar iets specifiek -->
+            <!--<img id="manwoman" src="img/man-woman-symbol.png">-->
+
+            <div id="kader">
+                <img id="foto" src=""  alt="profiel afbeelding" width="100px;"> 
+            <!-- hier de foto vanuit de json gegevens -->            
+            </div>
+            <div class="">
+                <!-- hier komt de nickname-->
+                <input type="text" id="nickname" value="">
+            </div>
+        </section>
+        <!--kolom2 gegevensvenster-->
+        <section id="column2">                                       
+                <!-- mogelijkheid tot deleten van het profiel-->
+                <p hidden>ID:<input type="text" id="_id" value="" ></p> 
+                <p>Familienaam:<input type="text" id="familienaam" value="" ></p> 
+                <p>Naam: <input type="text" id="naam" value=""></p>
+                <p>Geboortedatum: <input type="text" id="geboortedatum" value="" ></p>
+                <p>E-mail: <input type="text" id="mailadres" value="" ></p>
+                <p>Beroep: <input type="text" id="beroep" value="" ></p>
+                <p>Geslacht: <input type="text" id="sexe" value="" ></p>
+                <p>Oogkleur: <input type="text" id="oogkleur" value="" ></p>
+                <p>Grootte: <input type="text" id="grootte" value="" ></p>
+                <p>Gewicht: <input type="text" id="gewicht" value="" ></p>
+                <p>Wachtwoord: <input type="text" id="wachtwoord" value="" ></p>   
+                
+                <button id="opslaan">Opslaan</button>
+        </section>
+        <!--end midden-->
+    </div>
+    <footer id="footer"><p>Copyright</p></p></footer>
+</div>
+
+
+<!--<script defer>
+    window.onload = function () {
+        console.log(scrumlib.getAllDatasets());
+
+    }
+</script>-->
+</body>
+</html>
