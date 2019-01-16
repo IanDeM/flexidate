@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Flexi Scrum demo FlexiDating</title>
+    <link href="css/index.css" rel="stylesheet"/>
+    <script src="js/index.js"></script>
+    <script src="js/overzicht.js"></script>
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+</head>
+<body>
+<script src="js/jquery.min.js"></script>
+<script async src="js/flexi_scrum.min.js"></script>
+
+<!--container-->
+<div id="containerSite">
+
+    <!--header-->
+    <header id="header">
+        <!--header left banner-->
+        <section id="banner"></section>
+        <!--header right opvulling kleur en knop-->
+        <aside id="menuTopRight">
+            <button id="deKnop17">Mijn profiel</button>
+            <button id="deKnop18">Uitloggen</button>
+        </aside>
+    </header>
+    <!--end header-->
+
+    <div id="midden">
+
+        <div id="kolom1">
+            <div id="nav">
+                <ul>
+                    <li>
+                        <p><label>zoek op index (getal) </label><input type="text" name="zoek_index" id="zoek_index">
+
+                        </p>
+                    </li>
+                    <li>
+                        <p><label>zoek op id </label><input type="text" name="zoek_id" id="zoek_id">
+
+                        </p>
+                    </li>
+                    <li>
+                        <p><label>zoek op voornaam </label><input type="text" name="zoek_voornaam" id="zoek_voornaam">
+                            <label>Fuzzy search <input type="checkbox" name="voornaam_fuzzy"
+                                                       id="voornaam_fuzzy"></label>
+
+                        </p>
+                    </li>
+                    <li>
+                        <p><label>kies sexe </label><select name="zoek_sexe" id="zoek_sexe">
+                            <option value="" selected>beide sexes</option>
+                            <option>v</option>
+                            <option>m</option>
+                        </select>
+
+                        </p>
+                    </li>
+                    <li><p><label>zoek haarkleur </label><input type="text" name="zoek_haarkleur" id="zoek_haarkleur">
+
+                    </p></li>
+                    <li><p><label>kleiner dan </label><input type="text" name="zoek_grootte" id="zoek_grootte"
+                                                             placeholder="grootte">
+
+                    </p></li>
+
+                    <li><p><label>geboortedatum vroeger dan (yyyy-mm-dd)</label><input type="text" name="zoek_datum"
+                                                                                       id="zoek_datum"
+                                                                                       placeholder="datum (yyyy-mm-dd)">
+
+                    </p></li>
+                    <li>
+                        <button type=button id="deKnop16">hoofdZoek</button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div id="kolom2">
+            <!--foto' van alle profielen>
+<div id="midden">
+    <!--container egevens-->
+            <div id="containerOverzicht">
+
+            <!--end midden-->
+        </div>
+
+    </div>
+    <div id="kolom3">
+        <p id="voortgangProfiel"></p>
+
+    </div>
+</div>
+<footer id="footer"><p>Copyright</p></p></footer>
+</div>
+
+
+<!--<script defer>
+    window.onload = function () {
+        console.log(scrumlib.getAllDatasets());
+
+    }
+</script>-->
+<script>
+    $(function () {
+        $('#nav').hover(function () {
+            $(this).animate({width: '300px'}, 500);
+        }, function () {
+            $(this).animate({width: '30px'}, 500);
+        }).trigger('mouseleave');
+    });
+</script>
+<script>
+
+</script>
+</body>
+</html>

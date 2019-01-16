@@ -1,134 +1,138 @@
-window.onload = function() {
-	console.log(scrumlib.getAllDatasets());
+window.onload = function () {
+    console.log(scrumlib.getAllDatasets());
     console.log("js geladen");
-		
-	
-	
-    var eLoginOptie = document.getElementById('loginOptie');
-    var eInschrijvenOptie = document.getElementById('inschrijvenOptie');
 
-	eLoginOptie.style.display = 'inline';
-	eInschrijvenOptie.style.display = 'none';
+    var zoek_id = document.getElementById('zoek_id');
+    var zoek_index = document.getElementById('zoek_index');
+    var zoek_voornaam = document.getElementById('zoek_voornaam');
+    var zoek_sexe = document.getElementById('zoek_sexe');
+    var zoek_haarkleur = document.getElementById('zoek_haarkleur');
+    var zoek_grootte = document.getElementById('zoek_grootte');
+    var zoek_datum = document.getElementById('zoek_datum');
 
-    var buttonTop = document.querySelector('#deKnop14b');
-    console.log(buttonTop);
-    var buttonBottom = document.querySelector('#deKnop14');
-    buttonTop.addEventListener('click', function () {
-        changeButton(buttonTop, buttonBottom)
+    console.log(scrumlib.getAllDatasets());
+
+    console.log("js onload overzicht");
+
+    var buttonProfiel = document.querySelector('#deKnop17');
+    buttonProfiel.addEventListener('click', function () {
+        submitProfiel()
     });
-    buttonBottom.addEventListener('click', function () {
-        submitButton(buttonBottom)
+
+    var buttonLogoff = document.querySelector('#deKnop18');
+    buttonLogoff.addEventListener('click', function () {
+        submitLogoff()
     });
+
+    loadProfiles();
+
+    setSearchVisibility(scrumlib.getDatasetById(localStorage.getItem("ingelogd")));
+    /*toonVoortgangProfiel(scrumlib.getDatasetById(localStorage.getItem("ingelogd")));*/
+
+
+    var deKnop16 = document.getElementById('deKnop16');
+
+
+    deKnop16.addEventListener('click', function () {
+
+        var aAllDatasets = scrumlib.getAllDatasets();
+        console.log(aAllDatasets);
+        var idSet = scrumlib.getDatasetById(zoek_id.value);
+        var filteredSet = aAllDatasets;
+
+        if (idSet.length !== 0) {
+            filteredSet = filterSearchResults(aAllDatasets, idSet);
+        }
+
+        var fuzzy = document.getElementById('voornaam_fuzzy').checked;
+        var match = (fuzzy === true) ? "~" : "=";
+        var condition = {voornaam: {"waarde": zoek_voornaam.value, "match": match}};
+        var voornaamSet = scrumlib.getDatasetsByConditions(condition);
+        console.log(voornaamSet);
+
+        if ((voornaamSet.length !== 0) /*&& (fuzzy.disabled===false) && (zoek_voornaam.disabled === false)*/) {
+            filteredSet = filterSearchResults(filteredSet, voornaamSet);
+        }
+        var indexSet = scrumlib.getDatasetByIndex(zoek_index.value);
+        if (zoek_index.value !== "" && indexSet !== undefined) {
+            filteredSet = filterSearchResults(filteredSet, indexSet);
+        }
+
+
+        var zoek = zoek_sexe.value;
+        if (zoek !== "") {
+            match = "=";
+            condition = {sexe: {"waarde": zoek, "match": match}};
+            var sexeSet = scrumlib.getDatasetsByConditions(condition);
+            filteredSet = filterSearchResults(filteredSet, sexeSet);
+        }
+
+        condition = {haarkleur: {"waarde": zoek_haarkleur.value, "match": "~"}};
+        var haarkleurSet = scrumlib.getDatasetsByConditions(condition);
+        if (haarkleurSet.length !== 0) {
+            filteredSet = filterSearchResults(filteredSet, haarkleurSet);
+        }
+
+        condition = {grootte: {"waarde": zoek_grootte.value, "match": "<"}};
+        var grootteSet = scrumlib.getDatasetsByConditions(condition);
+        if (grootteSet.length !== 0) {
+            filteredSet = filterSearchResults(filteredSet, grootteSet);
+        }
+
+        condition = {geboortedatum: {"waarde": zoek_datum.value, "match": "<"}};
+        var gebDatumSet = scrumlib.getDatasetsByConditions(condition);
+        if (gebDatumSet.length !== 0) {
+            filteredSet = filterSearchResults(filteredSet, gebDatumSet);
+        }
+
+        console.log(filteredSet);
+    });
+
 };
 
-function changeButton(top, bottom) {
-    console.log(top.innerHTML, bottom.innerHTML);
-	
-     var eLoginOptie = document.getElementById('loginOptie');
-     var eInschrijvenOptie = document.getElementById('inschrijvenOptie');
- 	
-    if (top.innerHTML === 'Inschrijven') {
-        top.innerHTML = 'Inloggen';
-        bottom.innerHTML = 'Inschrijven';
-		eLoginOptie.style.display = 'none';
-		eInschrijvenOptie.style.display = 'inline';
-
+function setSearchVisibility(loggedUser) {
+    var oUser = loggedUser[0];
+    var eVoornaam = document.getElementById('zoek_voornaam');
+    var eFuzzy = document.getElementById('voornaam_fuzzy');
+    var eSexe = document.getElementById('zoek_sexe');
+    var eHaarkleur = document.getElementById('zoek_haarkleur');
+    var eKleiner = document.getElementById('zoek_grootte');
+    var eGebDatum = document.getElementById('zoek_datum');
+    if (oUser.voornaam === "") {
+        eVoornaam.disabled = true;
+        eFuzzy.disabled = true;
     }
-    else if (top.innerHTML === 'Inloggen') {
-        top.innerHTML = 'Inschrijven';
-        bottom.innerHTML = 'Inloggen';
-		eLoginOptie.style.display = 'inline';
-		eInschrijvenOptie.style.display = 'none';		
+    if (oUser.sexe === "") {
+        eSexe.disabled = true;
     }
-
-
+    if (oUser.haarkleur === "") {
+        eHaarkleur.disabled = true;
+    }
+    if (oUser.grootte === 0) {
+        eKleiner.disabled = true;
+    }
+    if (oUser.geboortedatum === "") {
+        eGebDatum.disabled = true;
+    }
 }
-function submitButton(bottom) {
-	//alert(bottom.innerHTML);
-	if (bottom.innerHTML === "Inloggen")
-	{
-		// inloggen met de verkregen gegevens
-		//alert(document.getElementById('login_email').value);
-		//alert(document.getElementById('login_pw').value);
-		login_email = document.getElementById('login_email').value;
-		login_pw = document.getElementById('login_pw').value;
-		var ingelogd = false;
-        ingelogd = scrumlib.login(login_email, login_pw);
-		if (ingelogd == false)
-		{
-		   alert("opnieuw inloggen : verkeerde login en/of paswoord");
-		   //var local_ingelogd = localStorage['ingelogd'];
-		   localStorage.removeItem('ingelogd');
-		}
-		else
-		{
-		   //alert("ingelogd");
-		   localStorage.setItem('ingelogd',ingelogd);
-		  // hieronder nog aanpassen wat na het inloggen moet gebeuren 
-		  // window.open("profielen.html", "_self");
-		}
-    }		
-	if (bottom.innerHTML === "Inschrijven")
-	{
-		// inschrijven met de verkregen gegevens
-		//alert(document.getElementById('email').value);
-		//alert(document.getElementById('wachtwoord').value);
-		login_email = document.getElementById('email');
-		login_pw1 = document.getElementById('wachtwoord1');
-		login_pw2 = document.getElementById('wachtwoord2');
-		
-            //login return id of false
-            var condition = {email: {"waarde": login_email.value, "match": "="}};
-            //console.log(scrumlib.getDatasetsByConditions(condition));
-			var jobject =scrumlib.getDatasetsByConditions(condition);
 
-			if  (jobject.length != 0)
-			{
-				alert("Registratie met dit email adres is al reeds gebeurd");
-				console.log(jobject);
-				console.log(jobject.length);
-				console.log(jobject[0].email);
+function filterSearchResults(firstArray, secondArray) {
+    var tempSet = [];
+    for (i = 0; i < firstArray.length; i++) {
+        for (j = 0; j < secondArray.length; j++) {
 
-			}
-			//console.log(login_pw1.value);
-			//console.log(login_pw2.value);
-			if (login_pw1.value == "" || login_pw2.value == "")
-			{ 
-			    alert("Gelieve beide paswoorden in te vullen");
-			}
-			if (login_pw1.value != login_pw2.value )
-			{ 
-			    alert("Beide paswoorden moeten gelijk zijn.");
-			}
-			
-			if ( jobject.length == 0 && login_pw1.value == login_pw2.value && login_pw1.value != "" && login_pw2.value != "")
-			{
-			   
-				   var new_profiel = {
-					beroep: "",
-					email: login_email.value,
-					familienaam: "",
-					foto: "",
-					geboortedatum: "",
-					gewicht: 0,
-					grootte: 0,
-					haarkleur: "",
-					nickname: "",
-					oogkleur: "",
-					sexe: "",
-					voornaam: "", 
-					wachtwoord:login_pw1.value
-				};
-				var jnewobject =scrumlib.createDataset(new_profiel);
-				if  (jnewobject.length != 0)
-				{
-				scrumlib.save();
-				
-				console.log(scrumlib.getAllDatasets());
-				// Hieronder veranderen van pagina.
-			    }
-			}
-	}
-    console.log("submitButton");
-	
+            if (firstArray[i]._id === secondArray[j]._id) {
+                tempSet.push(firstArray[i]);
+            }
+        }
+    }
+    return tempSet;
 }
+
+
+/*
+function toonVoorgangProfiel(loggedUser){
+    var oUser = loggedUser[0];
+    var totaalVelden = 14;
+
+*/

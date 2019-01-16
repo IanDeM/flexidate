@@ -4,10 +4,43 @@
     <meta charset="UTF-8">
     <title>Flexi Scrum demo FlexiDating</title>
     <link href="css/index.css" rel="stylesheet"/>
-    <!-- <script src="js/index.js"></script> -->
-  
+    <script src="js/mijnprofiel.js"></script>
     <script type="text/javascript" src="js/profielen.json"></script>
-    <script type="text/javascript" src="js/mijnprofiel.js"></script>     
+
+    <script>
+        /*var libversie, deKnop14,deKnop15;
+        var login_email, login_pw;
+
+    window.onload = function () {
+
+        libversie = document.getElementById('libversie');
+		var local_ingelogd = localStorage['ingelogd'];
+		//alert(local_ingelogd);
+		console.log(scrumlib.getDatasetById(local_ingelogd));
+		var jobject = scrumlib.getDatasetById(local_ingelogd);
+		if  (jobject.length != 0)
+		{
+            // alert("gevonden");
+            document.getElementById("familienaam").value = jobject[0].familienaam;
+            document.getElementById("naam").value = jobject[0].voornaam;
+            document.getElementById("geboortedatum").value = jobject[0].geboortedatum;
+            document.getElementById("mailadres").value = jobject[0].email;
+            document.getElementById("nickname").value = jobject[0].nickname;            
+            document.getElementById("foto").src = "img/" + jobject[0].foto;            
+            document.getElementById("beroep").value = jobject[0].beroep;
+            document.getElementById("sexe").value = jobject[0].sexe;            
+            document.getElementById("oogkleur").value = jobject[0].oogkleur;
+            document.getElementById("grootte").value = jobject[0].grootte;
+            document.getElementById("gewicht").value = jobject[0].gewicht;
+            document.getElementById("wachtwoord").value = jobject[0].wachtwoord;  		 
+			 
+		}
+		else
+		{
+			alert("Onbestaand profiel !!!");
+        }
+    }*/
+    </script>             
 </head>
 <body>
 <script src="js/jquery.min.js"></script>
@@ -22,7 +55,7 @@
         <section id="banner"></section>
         <!--header right opvulling kleur en knop-->
         <aside id="menuTopRight">
-            <button id="deKnop14b">Inschrijven</button>
+            <!--<button id="deKnop14b">Inschrijven</button>-->
         </aside>
     </header>
     <!--end header-->
@@ -30,23 +63,14 @@
     <!--midden twee kolommen met links fade en rechts gegevensvenster-->
     <div id="midden">
         <!--kolom1 fadekleur, manWoman logo -->
-        <section id="column1">
-            <!-- afbeelding eventueel veranderen naar iets specifiek -->
-            <!--<img id="manwoman" src="img/man-woman-symbol.png">-->
+        <div id="kolom1">
 
-            <div id="kader">
-                <img id="foto" src=""  alt="profiel afbeelding" width="100px;"> 
-            <!-- hier de foto vanuit de json gegevens -->            
-            </div>
-            <div class="">
-                <!-- hier komt de nickname-->
-                <input type="text" id="nickname" value="">
-            </div>
-        </section>
+        </div>
         <!--kolom2 gegevensvenster-->
-        <section id="column2">                                       
+        <div id="kolom2">
+            <div id="kolom2a">
                 <!-- mogelijkheid tot deleten van het profiel-->
-                <p hidden>ID:<input type="text" id="_id" value="" ></p> 
+                <p hidden>ID:<input type="text" id="_id" value="" ></p>
                 <p>Familienaam:<input type="text" id="familienaam" value="" ></p> 
                 <p>Naam: <input type="text" id="naam" value=""></p>
                 <p>Geboortedatum: <input type="text" id="geboortedatum" value="" ></p>
@@ -59,7 +83,25 @@
                 <p>Wachtwoord: <input type="text" id="wachtwoord" value="" ></p>   
                 
                 <button id="opslaan">Opslaan</button>
-        </section>
+            </div>
+            <div id="kolom2b">
+                <!-- afbeelding eventueel veranderen naar iets specifiek -->
+                <!--<img id="manwoman" src="img/man-woman-symbol.png">-->
+
+                <div id="kader">
+                    <img id="foto" src=""  alt="profiel afbeelding" width="100px;">
+                    <!-- hier de foto vanuit de json gegevens -->
+                </div>
+                <br>
+                <div id="nicknameClass">
+                    <!-- hier komt de nickname-->
+                    <input type="text" id="nickname" value="">
+                </div>
+            </div>
+        </div>
+        <div id="kolom3">
+
+        </div>
         <!--end midden-->
     </div>
     <footer id="footer"><p>Copyright</p></p></footer>

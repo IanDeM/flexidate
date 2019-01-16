@@ -23,14 +23,13 @@
 
 #header {
     height: 150px;
-    border-bottom: white solid 1px;
+    /*border-bottom: white solid 1px;*/
 }
 
 #banner {
     float: left;
     width: 60%;
-    background: url("../img/flexidatingBanner.jpg");
-    background-repeat: no-repeat;
+    background: url("../img/flexidatingBanner.jpg") no-repeat;
     background-size: cover;
     height: inherit;
 }
@@ -41,6 +40,31 @@
     background-color: rgb(78, 96, 120);
     height: inherit;
     position: relative;
+}
+
+#deKnop17 {
+    background-color: white;
+    color: rgb(78, 96, 120);
+    border-style: none;
+    width: 120px;
+    padding: 10px;
+    border-radius: 20px;
+    position: absolute;
+    bottom: 10px;
+    right: 140px;
+
+}
+
+#deKnop18 {
+    background-color: white;
+    color: rgb(78, 96, 120);
+    width: 120px;
+    border-radius: 20px;
+    border: none;
+    padding: 10px;
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
 }
 
 #deKnop14b {
@@ -136,5 +160,62 @@
     clear: both;
     height: 500px;
     border-bottom: 2px solid white;
+    width: 100%
+}
 
+div#kolom1 {
+    float: left;
+    width: 20%;
+    background-image: linear-gradient(to left, rgba(78, 96, 120, 0.2), rgba(78, 96, 120, 1));
+    height: inherit;
+    color: white;
+
+}
+
+div#kolom2 {
+    float: left;
+    width: 60%;
+    background-color: rgba(78, 96, 120, 0.2);
+    height: inherit;
+}
+
+div#kolom2a input {
+    float: right;
+}
+
+#kolom2a {
+    float: left;
+    padding-right: 20%;
+    padding-left: 10%;
+    width: 40%;
+    padding-top: 5%;
+}
+
+#kolom2b {
+    float: left;
+    width: 30%;
+    padding-top: 10%;
+}
+
+div#kolom3 {
+    float: left;
+    width: 20%;
+    background-image: linear-gradient(to right, rgba(78, 96, 120, 0.2), rgba(78, 96, 120, 1));
+    height: inherit;
+}
+
+#nav {
+    width: 200px;
+    height: 100%;
+    background-image: linear-gradient(to left, rgba(78, 96, 120, 0), rgba(78, 96, 120, 0.9));
+    color: #fff;
+    overflow: hidden;
+}
+
+#nav ul {
+    margin: 0;
+    padding: 0;
+    width: 200px;
+    margin: 35px;
+    list-style: none;
 }
