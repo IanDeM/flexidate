@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Flexi Scrum demo FlexiDating</title>
+    <link href="css/index.css" rel="stylesheet"/>
+    <!-- <script src="js/index.js"></script> -->
+  
+    <script type="text/javascript" src="js/profielen.json"></script>
+    <script type="text/javascript" src="js/mijnprofiel.js"></script>     
+</head>
+<body>
+<script src="js/jquery.min.js"></script>
+<script async src="js/flexi_scrum.min.js"></script>
+
+<!--container-->
+<div id="containerSite">
+
+    <!--header-->
+    <header id="header">
+        <!--header left banner-->
+        <section id="banner"></section>
+        <!--header right opvulling kleur en knop-->
+        <aside id="menuTopRight">
+            <button id="deKnop14b">Inschrijven</button>
+        </aside>
+    </header>
+    <!--end header-->
+
+    <!--midden twee kolommen met links fade en rechts gegevensvenster-->
+    <div id="midden">
+        <!--kolom1 fadekleur, manWoman logo -->
+        <section id="column1">
+            <!-- afbeelding eventueel veranderen naar iets specifiek -->
+            <!--<img id="manwoman" src="img/man-woman-symbol.png">-->
+
+            <div id="kader">
+                <img id="foto" src=""  alt="profiel afbeelding" width="100px;"> 
+            <!-- hier de foto vanuit de json gegevens -->            
+            </div>
+            <div class="">
+                <!-- hier komt de nickname-->
+                <input type="text" id="nickname" value="">
+            </div>
+        </section>
+        <!--kolom2 gegevensvenster-->
+        <section id="column2">                                       
+                <!-- mogelijkheid tot deleten van het profiel-->
+                <p hidden>ID:<input type="text" id="_id" value="" ></p> 
+                <p>Familienaam:<input type="text" id="familienaam" value="" ></p> 
+                <p>Naam: <input type="text" id="naam" value=""></p>
+                <p>Geboortedatum: <input type="text" id="geboortedatum" value="" ></p>
+                <p>E-mail: <input type="text" id="mailadres" value="" ></p>
+                <p>Beroep: <input type="text" id="beroep" value="" ></p>
+                <p>Geslacht: <input type="text" id="sexe" value="" ></p>
+                <p>Oogkleur: <input type="text" id="oogkleur" value="" ></p>
+                <p>Grootte: <input type="text" id="grootte" value="" ></p>
+                <p>Gewicht: <input type="text" id="gewicht" value="" ></p>
+                <p>Wachtwoord: <input type="text" id="wachtwoord" value="" ></p>   
+                
+                <button id="opslaan">Opslaan</button>
+        </section>
+        <!--end midden-->
+    </div>
+    <footer id="footer"><p>Copyright</p></p></footer>
+</div>
+
+
+<!--<script defer>
+    window.onload = function () {
+        console.log(scrumlib.getAllDatasets());
+
+    }
+</script>-->
+</body>
+</html>
