@@ -29,27 +29,30 @@
     <div id="midden">
 
         <div id="kolom1">
-            <div id="nav">
+            <button onclick="search_open()" id="openSearch">?</button>
+            <button onclick="search_close()" id="closeSearch" style="display:none">X</button>
+            <div class="nav" id="search" style="display:none">
+
                 <ul>
                     <li>
-                        <p><label>zoek op index (getal) </label><input type="text" name="zoek_index" id="zoek_index">
+                        <p id="eersteZoek"> <label>zoek op index (getal) </label><input type="text" name="zoek_index" id="zoek_index">
+
+                        </p>
+                    </li >
+                    <li>
+                        <p> <label>zoek op id </label><input type="text" name="zoek_id" id="zoek_id">
 
                         </p>
                     </li>
-                    <li>
-                        <p><label>zoek op id </label><input type="text" name="zoek_id" id="zoek_id">
-
-                        </p>
-                    </li>
-                    <li>
-                        <p><label>zoek op voornaam </label><input type="text" name="zoek_voornaam" id="zoek_voornaam">
+                    <li id="zVoornaam">
+                        <p ><label>zoek op voornaam </label><input type="text" name="zoek_voornaam" id="zoek_voornaam">
                             <label>Fuzzy search <input type="checkbox" name="voornaam_fuzzy"
                                                        id="voornaam_fuzzy"></label>
 
                         </p>
                     </li>
-                    <li>
-                        <p><label>kies sexe </label><select name="zoek_sexe" id="zoek_sexe">
+                    <li id="zSexe">
+                        <p ><label>kies sexe </label><select name="zoek_sexe" id="zoek_sexe">
                             <option value="" selected>beide sexes</option>
                             <option>v</option>
                             <option>m</option>
@@ -57,31 +60,30 @@
 
                         </p>
                     </li>
-                    <li><p><label>zoek haarkleur </label><input type="text" name="zoek_haarkleur" id="zoek_haarkleur">
+                    <li id="zHaarkleur"><p><label>zoek haarkleur </label><input type="text" name="zoek_haarkleur" id="zoek_haarkleur">
 
                     </p></li>
-                    <li><p><label>kleiner dan </label><input type="text" name="zoek_grootte" id="zoek_grootte"
+                    <li id="zGrootte"><p><label>kleiner dan </label><input type="text" name="zoek_grootte" id="zoek_grootte"
                                                              placeholder="grootte">
 
                     </p></li>
 
-                    <li><p><label>geboortedatum vroeger dan (yyyy-mm-dd)</label><input type="text" name="zoek_datum"
+                    <li id="zGebdatum"><p><label>geboortedatum vroeger dan (yyyy-mm-dd)</label><input type="text" name="zoek_datum"
                                                                                        id="zoek_datum"
                                                                                        placeholder="datum (yyyy-mm-dd)">
 
                     </p></li>
                     <li>
-                        <button type=button id="deKnop16">hoofdZoek</button>
+                        <button type=button id="deKnop16">Find your love</button>
                     </li>
-					<!--VWI-->
-                    <li>
-                        <button type=button id="lucky">I feel lucky</button>
+                    <li id="boodschapZoekMogelijkheden">
+                        <p>Vul je profiel verder aan voor meer zoekmogelijkheden</p>
                     </li>
 					<!--VWI-->
                 </ul>
             </div>
         </div>
-        <div id="kolom2">
+        <div id="kolom2"><br>
             <!--foto' van alle profielen>
 <div id="midden">
     <!--container egevens-->
@@ -92,13 +94,17 @@
 
     </div>
     <div id="kolom3">
+        <!--NIEUWE CODE-->
         <p id="voortgangProfiel"></p>
-
+        <div id="progressBar">
+            <div id="progressBarInside"><span id="barText"></span></div>
+        </div>
+        <!--END NIEUWE CODE-->
     </div>
 </div>
 <footer id="footer"><p>Copyright</p></p></footer>
 </div>
- 
+
 
 <!--<script defer>
     window.onload = function () {
@@ -107,16 +113,18 @@
     }
 </script>-->
 <script>
-    $(function () {
-        $('#nav').hover(function () {
-            $(this).animate({width: '300px'}, 500);
-        }, function () {
-            $(this).animate({width: '30px'}, 500);
-        }).trigger('mouseleave');
-    });
-</script>
-<script>
+    function search_open() {
+        document.getElementById("search").style.width = "100%";
+        document.getElementById("search").style.display = "block";
+        document.getElementById("openSearch").style.display = "none";
+        document.getElementById("closeSearch").style.display = "inline";
+    }
 
+    function search_close() {
+        document.getElementById("search").style.display = "none";
+        document.getElementById("openSearch").style.display = "inline";
+        document.getElementById("closeSearch").style.display = "none";
+    }
 </script>
 </body>
 </html>

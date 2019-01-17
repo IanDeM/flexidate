@@ -62,11 +62,13 @@ window.onload = function () {
 	
 	
 
-	
-	
-	
-	
- 
+
+
+
+
+    setVoortgangProfiel(scrumlib.getDatasetById(localStorage.getItem("ingelogd")));
+
+
     var deKnop16 = document.getElementById('deKnop16');
 
 
@@ -122,66 +124,32 @@ window.onload = function () {
             filteredSet = filterSearchResults(filteredSet, gebDatumSet);
         }
 
-  //      console.log(filteredSet);
+        //      console.log(filteredSet);
 
         var myNode = document.getElementById("containerOverzicht");
-		while (myNode.firstChild) {
-			myNode.removeChild(myNode.firstChild);
-		}
-		var eContainer=document.getElementById("containerOverzicht");
-		var eUl = document.createElement('div');
-		//jsObject = JSON.parse(localStorage.flexidata);
-		jsObject = filteredSet;
-		var aantal = jsObject.length;
-		for(var i=0;i<aantal;i++){
-			//console.log(i);
-			var eLi = document.createElement('beeld');
+        while (myNode.firstChild) {
+            myNode.removeChild(myNode.firstChild);
+        }
+        var eContainer=document.getElementById("containerOverzicht");
+        var eUl = document.createElement('div');
+        //jsObject = JSON.parse(localStorage.flexidata);
+        jsObject = filteredSet;
+        var aantal = jsObject.length;
+        for(var i=0;i<aantal;i++){
+            //console.log(i);
+            var eLi = document.createElement('beeld');
 
-			eElem = jsObject[i];
+            eElem = jsObject[i];
 
-			fichier = "img/" + eElem.foto;
+            fichier = "img/" + eElem.foto;
 
-			eLi.innerHTML= "<img width='100' src=" + fichier + " onclick=clickPhoto('" + eElem._id +"') alt='Geen foto' title='"+ eElem.nickname +"'>";
+            eLi.innerHTML= "<img width='100' src=" + fichier + " onclick=clickPhoto('" + eElem._id +"') alt='Geen foto' title='"+ eElem.nickname +"'>";
 
-			eUl.appendChild(eLi);
-		}
-		eContainer.appendChild(eUl);
-		eContainer.style.display = 'inline';
-			
-			
-		});
-		
-		 var delucky = document.getElementById('lucky');
-
-        //VWI
-        delucky.addEventListener('click', function () {
-
-            var aAllDatasets = scrumlib.getAllDatasets();
-			var myNode = document.getElementById("containerOverzicht");
-			while (myNode.firstChild) {
-				myNode.removeChild(myNode.firstChild);
-			}
-			var eContainer=document.getElementById("containerOverzicht");
-			var zoek_index = Math.floor(Math.random() * (aAllDatasets.length - 1));
-			var jsObject = scrumlib.getDatasetByIndex(zoek_index);
-			var eUl = document.createElement('div');
-			var aantal = jsObject.length;
-			for(var i=0;i<aantal;i++){
-				var eLi = document.createElement('beeld');
-
-				eElem = jsObject[i];
-
-				fichier = "img/" + eElem.foto;
-
-				eLi.innerHTML= "<img width='100' src=" + fichier + " onclick=clickPhoto('" + eElem._id +"') alt='Geen foto' title='"+ eElem.nickname +"'>";
-
-				eUl.appendChild(eLi);
-			}
-			eContainer.appendChild(eUl);
-			eContainer.style.display = 'inline';
-		
-	    });
-		//VWI
+            eUl.appendChild(eLi);
+        }
+        eContainer.appendChild(eUl);
+        eContainer.style.display = 'inline';
+	 });
 };
 
 
@@ -217,26 +185,40 @@ function clickPhoto(local_id) {
 function setSearchVisibility(loggedUser) {
     var oUser = loggedUser[0];
     var eVoornaam = document.getElementById('zoek_voornaam');
+    var zVoornaam = document.getElementById('zVoornaam');
     var eFuzzy = document.getElementById('voornaam_fuzzy');
     var eSexe = document.getElementById('zoek_sexe');
+    var zSexe = document.getElementById('zSexe');
     var eHaarkleur = document.getElementById('zoek_haarkleur');
+    var zHaarkleur = document.getElementById('zHaarkleur');
     var eKleiner = document.getElementById('zoek_grootte');
+    var zGrootte = document.getElementById('zGrootte');
     var eGebDatum = document.getElementById('zoek_datum');
+    var zGebDatum = document.getElementById('zGebdatum');
+
+
+
+
     if (oUser.voornaam === "") {
-        eVoornaam.disabled = true;
-        eFuzzy.disabled = true;
+        eVoornaam.style.display = "none";
+        eFuzzy.style.display = "none";
+        zVoornaam.style.display = "none";
     }
     if (oUser.sexe === "") {
-        eSexe.disabled = true;
+        eSexe.style.display = "none";
+        zSexe.style.display = "none";
     }
     if (oUser.haarkleur === "") {
-        eHaarkleur.disabled = true;
+        eHaarkleur.style.display = "none";
+        zHaarkleur.style.display = "none";
     }
     if (oUser.grootte === 0) {
-        eKleiner.disabled = true;
+        eKleiner.style.display = "none";
+        zGrootte.style.display = "none";
     }
     if (oUser.geboortedatum === "") {
-        eGebDatum.disabled = true;
+        eGebDatum.style.display = "none";
+        zGebDatum.style.display = "none";
     }
 }
 
@@ -253,10 +235,56 @@ function filterSearchResults(firstArray, secondArray) {
     return tempSet;
 }
 
-
-/*
-function toonVoorgangProfiel(loggedUser){
+function setVoortgangProfiel(loggedUser) {
     var oUser = loggedUser[0];
-    var totaalVelden = 14;
+    var totaalVelden = 11;
+    var ingevuld = 0;
+    var oVoortgang = document.getElementById('voortgangProfiel');
 
-*/
+
+    if (oUser.beroep !== "") {
+        ingevuld++;
+    }
+    if (oUser.familienaam !== "") {
+        ingevuld++;
+    }
+    if (oUser.foto !== "") {
+        ingevuld++;
+    }
+    if (oUser.geboortedatum !== "") {
+        ingevuld++;
+    }
+    if (oUser.gewicht > 0) {
+        ingevuld++;
+    }
+    if (oUser.grootte > 0) {
+        ingevuld++;
+    }
+    if (oUser.haarkleur !== "") {
+        ingevuld++;
+    }
+    if (oUser.nickname !== "") {
+        ingevuld++;
+    }
+    if (oUser.oogkleur !== "") {
+        ingevuld++;
+    }
+    if (oUser.sexe !== "") {
+        ingevuld++;
+    }
+    if (oUser.voornaam !== "") {
+        ingevuld++;
+    }
+
+    var procent = Math.round((100 / totaalVelden) * ingevuld);
+
+    oVoortgang.innerHTML = "Profielstatus";
+
+    document.getElementById('progressBarInside').style.width = procent + "px";
+    document.getElementById('barText').innerHTML = procent+"%";
+
+    var boodschapZoek = document.getElementById('boodschapZoekMogelijkheden');
+    if(procent === 100) {boodschapZoek.style.display ="none";}
+
+}
+
