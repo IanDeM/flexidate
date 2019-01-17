@@ -45,7 +45,13 @@ window.onload = function () {
 
     var knop_update = document.getElementById('opslaan');
     knop_update.addEventListener('click', opslaan);
-
+    //VWI
+    var knop_uitschrijf = document.getElementById('uitschrijven');
+    knop_uitschrijf.addEventListener('click', uitschrijf);
+   
+	//VWI
+	
+	
 };// einde windows onload
 
 
@@ -86,3 +92,19 @@ function opslaan() {
 
     scrumlib.save();
 }
+
+//VWI
+// opslaan van de aangepaste gegevens in de local storage
+function uitschrijf() {
+    localStorage.setItem("_id", document.getElementById('_id').value);
+
+    if (document.getElementById('_id').value != "") {
+		console.log("Wissen van het profiel");
+        console.log(document.getElementById('_id').value);
+        scrumlib.deleteDataset(document.getElementById('_id').value);
+    }
+    scrumlib.save();
+    localStorage.removeItem("ingelogd");
+    window.open("index.html","_self");
+}
+//VWI
