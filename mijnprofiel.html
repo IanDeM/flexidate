@@ -73,16 +73,33 @@
                 <p hidden>ID:<input type="text" id="_id" value="" ></p>
                 <p>Familienaam:<input type="text" id="familienaam" value="" ></p> 
                 <p>Naam: <input type="text" id="naam" value=""></p>
-                <p>Geboortedatum: <input type="text" id="geboortedatum" value="" ></p>
-                <p>Sterrenbeeld: <input type="text" id="zodiac" value="" ></p>
+                <p>Geboortedatum: <input type="date" id="geboortedatum" value="" ></p>
+				<p>Sterrenbeeld: <input type="text" id="zodiac" value="" disabled></p>
                 <p>E-mail: <input type="text" id="mailadres" value="" ></p>
                 <p>Beroep: <input type="text" id="beroep" value="" ></p>
-                <p>Geslacht: <input type="text" id="sexe" value="" ></p>
-                <p>Oogkleur: <input type="text" id="oogkleur" value="" ></p>
-                <p>Grootte: <input type="text" id="grootte" value="" ></p>
-                <p>Gewicht: <input type="text" id="gewicht" value="" ></p>
-                <p>Wachtwoord: <input type="text" id="wachtwoord" value="" ></p>   
-                
+                <p>Geslacht:
+				<select name="sexe" id="sexe"  title="Kies sexe"  class="required">
+				<option value="">----Kies Geslacht----</option>
+				<option value="m">man </option>
+				<option value="v">vrouw </option>
+				</select>
+				</p>
+				<p>Oogkleur:
+				<select name="oogkleur" id="oogkleur"  title="Kies oogkleur"  class="required">
+				<option value="">----Kies Oogkleur----</option>
+				<option value="blauw">blauw </option>
+				<option value="bruin">bruin </option>
+				<option value="groen">groen </option>
+				<option value="grijs">grijs </option>
+				<option value="grijsgroen">grijsgroen </option>
+				<option value="groen-grijs">groengrijs </option>
+				</select>
+				</p>
+                <p>Grootte (in cm): <input type="text" id="grootte" value="" ></p>
+                <p>Gewicht (in kg): <input type="text" id="gewicht" value="" ></p>
+                <p>Huidig Wachtwoord: <input type="password" id="wachtwoord" value="" readonly></p>
+				<p>Nieuw Wachtwoord: <input type="password" id="wachtwoordNieuw" value=""></p>
+				<p>Wachtwoord Bevestigen: <input type="password" id="wachtwoordBevestigd" value=""></p>
                 <button id="opslaan">Opslaan</button>
 				<!--VWI-->
 				<button id="uitschrijven">Uitschrijven</button>

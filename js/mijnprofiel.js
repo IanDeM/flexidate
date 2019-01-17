@@ -94,45 +94,105 @@ else
 var knop_update = document.getElementById('opslaan');
 knop_update.addEventListener('click', opslaan);
 
+    //VWI
+    var knop_uitschrijf = document.getElementById('uitschrijven');
+    knop_uitschrijf.addEventListener('click', uitschrijf);
+   
+	//VWI
+
 } // einde windows onload
 
 
 
 // opslaan van de aangepaste gegevens in de local storage
 function opslaan(){   
-localStorage.setItem("familienaam", document.getElementById('familienaam').value); 
-localStorage.setItem("voornaam", document.getElementById('naam').value);
-localStorage.setItem("geboortedatum", document.getElementById('geboortedatum').value);
-localStorage.setItem("mailadres", document.getElementById('mailadres').value);
-localStorage.setItem("nickname", document.getElementById('nickname').value);
+    localStorage.setItem("familienaam", document.getElementById('familienaam').value);
+    localStorage.setItem("voornaam", document.getElementById('naam').value);
+    localStorage.setItem("geboortedatum", document.getElementById('geboortedatum').value);
+    localStorage.setItem("mailadres", document.getElementById('mailadres').value);
+    localStorage.setItem("nickname", document.getElementById('nickname').value);
 //localStorage.setItem("foto", document.getElementById('foto').src);  //*** Dit een uitbreiding?
-localStorage.setItem("beroep", document.getElementById('beroep').value);
-localStorage.setItem("sexe", document.getElementById('sexe').value);
-localStorage.setItem("oogkleur", document.getElementById('oogkleur').value);
-localStorage.setItem("grootte", document.getElementById('grootte').value);
-localStorage.setItem("gewicht", document.getElementById('gewicht').value);
-localStorage.setItem("wachtwoord", document.getElementById('wachtwoord').value);
-localStorage.setItem("_id", document.getElementById('_id').value);
+    localStorage.setItem("beroep", document.getElementById('beroep').value);
+    localStorage.setItem("sexe", document.getElementById('sexe').value);
+    localStorage.setItem("oogkleur", document.getElementById('oogkleur').value);
+    localStorage.setItem("grootte", document.getElementById('grootte').value);
+    localStorage.setItem("gewicht", document.getElementById('gewicht').value);
+    localStorage.setItem("wachtwoord", document.getElementById('wachtwoord').value);
+    localStorage.setItem("_id", document.getElementById('_id').value);
+	localStorage.setItem("wachtwoordNieuw", document.getElementById('wachtwoordNieuw').value);
+	localStorage.setItem("wachtwoordBevestigd", document.getElementById('wachtwoordBevestigd').value);
+	
+
 
 // de ingevulde velden via updatemap wegschrijven naar localstorage
-var updateMap = {};           
+    var updateMap = {};
 
-        updateMap.familienaam = document.getElementById("familienaam").value;
-        updateMap.voornaam = document.getElementById("naam").value;
-        updateMap.geboortedatum = document.getElementById("geboortedatum").value;
-        updateMap.email = document.getElementById("mailadres").value;
-        updateMap.nickname = document.getElementById("nickname").value;
-       // updateMap.foto = document.getElementById("foto").value;
-        updateMap.beroep = document.getElementById("beroep").value;
-        updateMap.sexe = document.getElementById("sexe").value;
-        updateMap.oogkleur = document.getElementById("oogkleur").value;
-        updateMap.grootte = document.getElementById("grootte").value;
-        updateMap.gewicht = document.getElementById("gewicht").value;
-        updateMap.wachtwoord = document.getElementById("wachtwoord").value;
-        // wegschrijven van de data naar de local storage
-        scrumlib.updateDataset(localStorage.getItem("_id", document.getElementById('_id').value), updateMap);              
+    updateMap.familienaam = document.getElementById("familienaam").value;
+    updateMap.voornaam = document.getElementById("naam").value;
+    updateMap.geboortedatum = document.getElementById("geboortedatum").value;
+    updateMap.email = document.getElementById("mailadres").value;
+    updateMap.nickname = document.getElementById("nickname").value;
+    // updateMap.foto = document.getElementById("foto").value;
+    updateMap.beroep = document.getElementById("beroep").value;
+    updateMap.sexe = document.getElementById("sexe").value;
+    updateMap.oogkleur = document.getElementById("oogkleur").value;
+    updateMap.grootte = document.getElementById("grootte").value;
+    updateMap.gewicht = document.getElementById("gewicht").value;
+// controle of de velden met het nieuwe wachtwoord gelijk zijn elkaar
 
 
+  
+	if (document.getElementById("wachtwoordNieuw").value != "" && document.getElementById("wachtwoordBevestigd").value != "") 
+	{
+		if (document.getElementById("wachtwoordNieuw").value == document.getElementById("wachtwoordBevestigd").value)
+		{
+            updateMap.wachtwoord = document.getElementById("wachtwoordNieuw").value;
+        }	
+	
+		else
+		{ 
+		    alert("Beide nieuwe wachtwoorden moet gelijk zijn aan elkaar ! Het wachtwoord blijft ongewijzigd");
+		}
+	}
+	else
+	{
+			updateMap.wachtwoord = document.getElementById("wachtwoord").value;
+	}
+
+		
+	
+	
+	
+/*	if (document.getElementById("wachtwoordNieuw").value == "")
+	{	
+		updateMap.wachtwoord = document.getElementById("wachtwoord").value;
+	}
+	else
+	{
+		updateMap.wachtwoord = document.getElementById("wachtwoordNieuw").value;
+	}	*/
+    // wegschrijven van de data naar de local storage
+    scrumlib.updateDataset(localStorage.getItem("_id", document.getElementById('_id').value), updateMap);
+
+
+    
 scrumlib.save();
 location.reload();
 }
+
+//VWI
+// opslaan van de aangepaste gegevens in de local storage
+function uitschrijf() {
+    localStorage.setItem("_id", document.getElementById('_id').value);
+
+    if (document.getElementById('_id').value != "") {
+		console.log("Wissen van het profiel");
+        console.log(document.getElementById('_id').value);
+        scrumlib.deleteDataset(document.getElementById('_id').value);
+    }
+    scrumlib.save();
+    localStorage.removeItem("ingelogd");
+    window.open("index.html","_self");
+}
+//VWI
+

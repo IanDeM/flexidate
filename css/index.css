@@ -183,6 +183,12 @@ div#kolom2a input {
     float: right;
 }
 
+/* nieuwe toevoeging */
+
+div#kolom2a select {
+    float: right;
+}
+
 #kolom2a {
     float: left;
     padding-right: 20%;
