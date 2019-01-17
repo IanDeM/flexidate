@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Flexi Scrum demo FlexiDating</title>
+    <link href="css/index.css" rel="stylesheet"/>
+    <script src="js/mailWebmaster.js"></script>    
+    <!--<script src="https://code.jquery.com/jquery-1.10.2.js"></script>-->
+</head>
+<body>
+<script src="js/jquery.min.js"></script>
+<script async src="js/flexi_scrum.min.js"></script>
+
+<!--container-->
+<div id="containerSite">
+
+    <!--header-->
+    <header id="header">
+        <!--header left banner-->
+        <section id="banner"></section>
+        <!--header right opvulling kleur en knop-->
+        <aside id="menuTopRight">
+            <button id="deKnop18">Uitloggen</button>
+        </aside>
+    </header>
+    <!--end header-->
+
+    <div id="midden">
+
+        <div id="kolom1">
+            <div id="nav">
+            </div>
+        </div>
+        <div id="kolom2">
+		<div id="midden">
+    <!--container voor mail -->
+            <div id="containerMail">		 
+				<form action="mailto:someone@example.com" method="post" enctype="text/plain">
+					<br>Naam:<br>
+					<input type="text" name="name"><br>
+					<br>E-mail adres:<br>
+					<input type="email" name="mail"><br>
+					<br>Boodschap:<br>
+					<input type="text" name="comment" size="50"><br><br>
+					<input type="submit" value="Send">
+					<input type="reset" value="Reset">
+				</form>
+			</div>
+            <!--end midden-->
+        </div>
+
+    </div>
+    <div id="kolom3">
+        <p id="voortgangProfiel"></p>
+
+    </div>
+</div>
+
+<footer id="footer">
+	<p>Copyright
+	</p>
+	</p>
+	</footer>
+</div>
+ 
+
+</body>
+</html>

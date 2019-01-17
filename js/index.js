@@ -24,7 +24,13 @@ window.onload = function () {
         submitLogoff()
     });
 
-    
+//* ERIC DEBUT
+	var buttonMail = document.querySelector('#buttonMail');
+    buttonMail.addEventListener('click', function () {
+        submitMail()
+    });	
+//* ERIC FIN    
+	
     var loggedUser = scrumlib.getDatasetById(localStorage.getItem("ingelogd"));
     setSearchVisibility(loggedUser);
 	//console.log(scrumlib.getDatasetById(localStorage.getItem("ingelogd")));
@@ -213,6 +219,13 @@ function submitLogoff() {
     window.open("index.html","_self");
 }
  
+ //* ERIC DEB
+function submitMail() {
+    console.log("submitMail");
+	
+	location.href = "mailWebmaster.html";
+}
+ //* ERIC FIN
 
 
 function clickPhoto(local_id) {

@@ -98,6 +98,21 @@
     text-align: center;
 }
 
+#containerMail {
+    /*border: 8px outset rgb(78, 96, 120);*/
+    border-style: solid;
+    border-width: 8px;
+    border-top-color: rgb(78, 96, 120);
+    border-left-color: rgb(78, 96, 120);
+    border-right-color: rgba(78, 96, 120, 0.5);
+    border-bottom-color: rgba(78, 96, 120, 0.5);
+    border-radius: 20px;
+    height: 50%;
+    margin: 10% 20%;
+    position: relative;
+    text-align: center;
+}
+
 #loginLabel {
     display: inline-block;
     margin-top: 20%;
@@ -183,7 +198,8 @@ img {
 
 #midden {
     clear: both;
-    height: 800px;
+    //height: 800px;
+	height: 75vh;
 	
     border-bottom: 2px solid white;
     width: 100%

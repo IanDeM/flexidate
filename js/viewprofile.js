@@ -88,7 +88,16 @@ if  (jobject.length != 0)
     document.getElementById("nickname").value = jobject[0].nickname;            
     document.getElementById("foto").src = "img/" + jobject[0].foto;            
     document.getElementById("beroep").value = jobject[0].beroep;
-    document.getElementById("sexe").value = jobject[0].sexe;            
+    //document.getElementById("sexe").value = jobject[0].sexe;  
+ 	if (jobject[0].sexe == "m")
+	{
+		document.getElementById("sexe").value = "Man";  
+	}
+	if (jobject[0].sexe == "v")
+	{
+		document.getElementById("sexe").value = "Vrouw";  
+	}
+
     document.getElementById("oogkleur").value = jobject[0].oogkleur;
     document.getElementById("grootte").value = jobject[0].grootte;
     document.getElementById("gewicht").value = jobject[0].gewicht;
