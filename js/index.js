@@ -44,26 +44,23 @@ window.onload = function () {
     //jsObject = JSON.parse(localStorage.flexidata);
 	jsObject = filteredSet;
     var aantal = jsObject.length;
-    for(var i=0;i<aantal;i++){
-        //console.log(i);
-        var eLi = document.createElement('beeld');
-
-        eElem = jsObject[i];
-
-        fichier = "img/" + eElem.foto;
-
-        eLi.innerHTML= "<img width='100' src=" + fichier + " onclick=clickPhoto('" + eElem._id +"') alt='Geen foto' title='"+ eElem.nickname +"'>";
-
-        eUl.appendChild(eLi);
-    }
-    eContainer.appendChild(eUl);
-    eContainer.style.display = 'inline';
-
 	
+	stringInnerHtml = "<div class='gallery'>"; 
 	
+		for(var i=0;i<aantal;i++){
+			eElem = jsObject[i];			
 
-
-
+			stringInnerHtml = stringInnerHtml + "<div class='thumb'" + " onclick=clickPhoto('" + eElem._id + "')>";
+				
+			stringInnerHtml = stringInnerHtml + "<img width='100' src= img/" + eElem.foto + " alt='Geen foto' title='"+ eElem.nickname +"'>" + "<center class='caption'>" + eElem.nickname + "</center></div>";
+				
+						
+		}
+		
+		stringInnerHtml = stringInnerHtml + "</div>";		
+		
+		eContainer.innerHTML = stringInnerHtml;		
+	
 
 
     setVoortgangProfiel(scrumlib.getDatasetById(localStorage.getItem("ingelogd")));
@@ -135,26 +132,73 @@ window.onload = function () {
         //jsObject = JSON.parse(localStorage.flexidata);
         jsObject = filteredSet;
         var aantal = jsObject.length;
-        for(var i=0;i<aantal;i++){
-            //console.log(i);
-            var eLi = document.createElement('beeld');
+		
+		stringInnerHtml = "<div class='gallery'>"; 
+	
+		for(var i=0;i<aantal;i++){
+			eElem = jsObject[i];			
 
-            eElem = jsObject[i];
+			stringInnerHtml = stringInnerHtml + "<div class='thumb'" + " onclick=clickPhoto('" + eElem._id + "')>";
+				
+			stringInnerHtml = stringInnerHtml + "<img width='100' src= img/" + eElem.foto + " alt='Geen foto' title='"+ eElem.nickname +"'>" + "<center class='caption'>" + eElem.nickname + "</center></div>";
+				
+						
+		}
+		
+		stringInnerHtml = stringInnerHtml + "</div>";		
+		
+		eContainer.innerHTML = stringInnerHtml;		
 
-            fichier = "img/" + eElem.foto;
-
-            eLi.innerHTML= "<img width='100' src=" + fichier + " onclick=clickPhoto('" + eElem._id +"') alt='Geen foto' title='"+ eElem.nickname +"'>";
-
-            eUl.appendChild(eLi);
-        }
-        eContainer.appendChild(eUl);
-        eContainer.style.display = 'inline';
+		
+		
+		
 	 });
+
+	 		 var delucky = document.getElementById('lucky');
+
+        //VWI
+        delucky.addEventListener('click', function () {
+
+            var aAllDatasets = scrumlib.getAllDatasets();
+			var myNode = document.getElementById("containerOverzicht");
+			while (myNode.firstChild) {
+				myNode.removeChild(myNode.firstChild);
+			}
+			var eContainer=document.getElementById("containerOverzicht");
+			var zoek_index = Math.floor(Math.random() * (aAllDatasets.length - 1));
+			var jsObject = scrumlib.getDatasetByIndex(zoek_index);
+			var eUl = document.createElement('div');
+			var aantal = jsObject.length;
+			
+			
+			
+			stringInnerHtml = "<div class='gallery'>"; 
+	
+			for(var i=0;i<aantal;i++){
+				eElem = jsObject[i];			
+
+				stringInnerHtml = stringInnerHtml + "<div class='thumb'" + " onclick=clickPhoto('" + eElem._id + "')>";
+				
+				stringInnerHtml = stringInnerHtml + "<img width='100' src= img/" + eElem.foto + " alt='Geen foto' title='"+ eElem.nickname +"'>" + "<center class='caption'>" + eElem.nickname + "</center></div>";
+				
+						
+			}
+		
+			stringInnerHtml = stringInnerHtml + "</div>";		
+		
+			eContainer.innerHTML = stringInnerHtml;		
+			
+			
+			
+		
+	    });
+		//VWI
+	 
 };
 
 
 function submitProfiel() {
-    //console.log("submitProfiel");
+     console.log("submitProfiel");
 
     localStorage.setItem ("detailID",localStorage.getItem("ingelogd"));
     localStorage.setItem ("switchup","1");
@@ -163,7 +207,7 @@ function submitProfiel() {
 }
 
 function submitLogoff() {
-    //console.log("submitLogoff");
+    console.log("submitLogoff");
 
     localStorage.removeItem("ingelogd");
     window.open("index.html","_self");
@@ -177,7 +221,7 @@ function clickPhoto(local_id) {
     localStorage.setItem ("detailID",local_id);
     localStorage.setItem ("switchup","0");
 
-    location.href = "mijnprofiel.html";
+    location.href = "viewprofiel.html";
 }
 
 
