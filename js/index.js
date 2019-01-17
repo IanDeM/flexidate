@@ -150,7 +150,38 @@ window.onload = function () {
 			
 			
 		});
+		
+		 var delucky = document.getElementById('lucky');
 
+        //VWI
+        delucky.addEventListener('click', function () {
+
+            var aAllDatasets = scrumlib.getAllDatasets();
+			var myNode = document.getElementById("containerOverzicht");
+			while (myNode.firstChild) {
+				myNode.removeChild(myNode.firstChild);
+			}
+			var eContainer=document.getElementById("containerOverzicht");
+			var zoek_index = Math.floor(Math.random() * (aAllDatasets.length - 1));
+			var jsObject = scrumlib.getDatasetByIndex(zoek_index);
+			var eUl = document.createElement('div');
+			var aantal = jsObject.length;
+			for(var i=0;i<aantal;i++){
+				var eLi = document.createElement('beeld');
+
+				eElem = jsObject[i];
+
+				fichier = "img/" + eElem.foto;
+
+				eLi.innerHTML= "<img width='100' src=" + fichier + " onclick=clickPhoto('" + eElem._id +"') alt='Geen foto' title='"+ eElem.nickname +"'>";
+
+				eUl.appendChild(eLi);
+			}
+			eContainer.appendChild(eUl);
+			eContainer.style.display = 'inline';
+		
+	    });
+		//VWI
 };
 
 
