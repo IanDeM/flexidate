@@ -221,7 +221,7 @@ function clickPhoto(local_id) {
     localStorage.setItem ("detailID",local_id);
     localStorage.setItem ("switchup","0");
 
-    location.href = "viewprofiel.html";
+    location.href = "viewprofile.html";
 }
 
 

@@ -7,40 +7,7 @@
     <script src="js/mijnprofiel.js"></script>
     <script type="text/javascript" src="js/profielen.json"></script>
 
-    <script>
-        /*var libversie, deKnop14,deKnop15;
-        var login_email, login_pw;
-
-    window.onload = function () {
-
-        libversie = document.getElementById('libversie');
-		var local_ingelogd = localStorage['ingelogd'];
-		//alert(local_ingelogd);
-		console.log(scrumlib.getDatasetById(local_ingelogd));
-		var jobject = scrumlib.getDatasetById(local_ingelogd);
-		if  (jobject.length != 0)
-		{
-            // alert("gevonden");
-            document.getElementById("familienaam").value = jobject[0].familienaam;
-            document.getElementById("naam").value = jobject[0].voornaam;
-            document.getElementById("geboortedatum").value = jobject[0].geboortedatum;
-            document.getElementById("mailadres").value = jobject[0].email;
-            document.getElementById("nickname").value = jobject[0].nickname;            
-            document.getElementById("foto").src = "img/" + jobject[0].foto;            
-            document.getElementById("beroep").value = jobject[0].beroep;
-            document.getElementById("sexe").value = jobject[0].sexe;            
-            document.getElementById("oogkleur").value = jobject[0].oogkleur;
-            document.getElementById("grootte").value = jobject[0].grootte;
-            document.getElementById("gewicht").value = jobject[0].gewicht;
-            document.getElementById("wachtwoord").value = jobject[0].wachtwoord;  		 
-			 
-		}
-		else
-		{
-			alert("Onbestaand profiel !!!");
-        }
-    }*/
-    </script>             
+      
 </head>
 <body>
 <script src="js/jquery.min.js"></script>
@@ -103,7 +70,8 @@
                 <button id="opslaan">Opslaan</button>
 				<!--VWI-->
 				<button id="uitschrijven">Uitschrijven</button>
-				<!--VWI-->
+                <!--VWI-->
+                <button onclick="window.location.href='profielen.html'">Terug naar overzicht Profielen</button>
             </div>
             <div id="kolom2b">
                 <!-- afbeelding eventueel veranderen naar iets specifiek -->

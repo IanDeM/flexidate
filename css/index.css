@@ -178,12 +178,13 @@ img {
 }
 
 #footer p {
-    margin-top: 0px;
+    margin-top: 0 px;
 }
 
 #midden {
     clear: both;
-    height: 500px;
+    height: 800px;
+	
     border-bottom: 2px solid white;
     width: 100%
 }
@@ -194,6 +195,7 @@ div#kolom1 {
     background-image: linear-gradient(to left, rgba(78, 96, 120, 0.2), rgba(78, 96, 120, 1));
     height: inherit;
     color: white;
+	
 
 }
 
@@ -202,6 +204,7 @@ div#kolom2 {
     width: 60%;
     background-color: rgba(78, 96, 120, 0.2);
     height: inherit;
+	
 }
 
 div#kolom2a input {

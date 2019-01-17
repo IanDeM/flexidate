@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Flexi Scrum demo FlexiDating</title>
+    <link href="css/index.css" rel="stylesheet"/>
+    <script src="js/viewprofile.js"></script>
+    <script type="text/javascript" src="js/profielen.json"></script>
+            
+</head>
+<body>
+<script src="js/jquery.min.js"></script>
+<script async src="js/flexi_scrum.min.js"></script>
+
+<!--container-->
+<div id="containerSite">
+
+    <!--header-->
+    <header id="header">
+        <!--header left banner-->
+        <section id="banner"></section>
+        <!--header right opvulling kleur en knop-->
+        <aside id="menuTopRight">
+            <!--<button id="deKnop14b">Inschrijven</button>-->
+        </aside>
+    </header>
+    <!--end header-->
+
+    <!--midden twee kolommen met links fade en rechts gegevensvenster-->
+    <div id="midden">
+        <!--kolom1 fadekleur, manWoman logo -->
+        <div id="kolom1">
+
+        </div>
+        <!--kolom2 gegevensvenster-->
+        <div id="kolom2">
+            <div id="kolom2a">
+                <!-- mogelijkheid tot deleten van het profiel-->
+                <p hidden>ID:<input type="text" id="_id" value="" ></p>
+                <p hidden>Familienaam:<input type="text" id="familienaam" value="" disabled></p> 
+                <p hidden>Naam: <input type="text" id="naam" value="" disabled></p>
+                <p hidden>Geboortedatum: <input type="date" id="geboortedatum" value="" disabled ></p>
+                <p>Sterrenbeeld: <input type="text" id="zodiac" value="" disabled></p>
+                <p>Leeftijd: <input type="text" id="leeftijd" value="" disabled></p>
+                <p hidden>E-mail: <input type="text" id="mailadres" value="" disabled></p>
+                <p>Beroep: <input type="text" id="beroep" value="" disabled></p>
+                <p>Geslacht:
+				<select name="sexe" id="sexe"  title="Kies sexe"  class="required" disabled>
+				<option value="">----Kies Geslacht----</option>
+				<option value="m">man </option>
+				<option value="v">vrouw </option>
+				</select>
+				</p>
+				<p>Oogkleur:
+				<select name="oogkleur" id="oogkleur"  title="Kies oogkleur"  disabled>
+				<option value="">----Kies Oogkleur----</option>
+				<option value="blauw">blauw </option>
+				<option value="bruin">bruin </option>
+				<option value="groen">groen </option>
+				<option value="grijs">grijs </option>
+				<option value="grijsgroen">grijsgroen </option>
+				<option value="groen-grijs">groengrijs </option>
+				</select>
+				</p>
+                <p>Grootte (in cm): <input type="text" id="grootte" value="" disabled></p>
+                <p>Gewicht (in kg): <input type="text" id="gewicht" value="" disabled ></p>
+                <p hidden>Huidig Wachtwoord: <input type="password" id="wachtwoord" value="" readonly></p>
+				<p hidden>Nieuw Wachtwoord: <input type="password" id="wachtwoordNieuw" value=""></p>
+                <p hidden>Wachtwoord Bevestigen: <input type="password" id="wachtwoordBevestigd" value=""></p>
+                <button onclick="window.location.href='profielen.html'">Terug naar overzicht Profielen</button>
+               
+                <button id="opslaan" hidden>Opslaan</button>
+				<!--VWI-->
+				<button id="uitschrijven" hidden>Uitschrijven</button>
+				<!--VWI-->
+            </div>
+            <div id="kolom2b">
+                <!-- afbeelding eventueel veranderen naar iets specifiek -->
+                <!--<img id="manwoman" src="img/man-woman-symbol.png">-->
+
+                <div id="kader">
+                    <img id="foto" src=""  alt="profiel afbeelding" width="100px;">
+                    <!-- hier de foto vanuit de json gegevens -->
+                </div>
+                <br>
+                <div id="nicknameClass">
+                    <!-- hier komt de nickname-->
+                    <input type="text" id="nickname" value="" disabled>
+                </div>
+            </div>
+        </div>
+        <div id="kolom3">
+
+        </div>
+        <!--end midden-->
+    </div>
+    <footer id="footer"><p>Copyright</p></p></footer>
+</div>
+
+
+<!--<script defer>
+    window.onload = function () {
+        console.log(scrumlib.getAllDatasets());
+
+    }
+</script>-->
+</body>
+</html>
