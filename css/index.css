@@ -285,10 +285,9 @@ div#kolom3 {
     width: 1px;
     margin-left: auto;
     margin-right: auto;
-    vertical-align: middle;
 }
 
-#barText {height: 30px; display: table-cell; vertical-align: middle;}
+#barText {height: 30px; vertical-align: middle; padding-top: 5px;}
 
 #containerOverzicht {
     text-align: center;
@@ -310,6 +309,9 @@ div#kolom3 {
 
 #voortgangProfiel {color: white; text-align: center;}
 
-
+#searchButton{
+    width: 30px;
+    height: 40px;
+}
 
 
