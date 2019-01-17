@@ -1,5 +1,6 @@
-		//var datums
-		var datum = new Date(jobject[0].geboortedatum);
+        //-------Bepalen zodiac------//
+        //var datums
+        var datum = new Date(jobject[0].geboortedatum);
 		var day = datum.getDate();
 		var month = datum.getMonth()+1;
 
@@ -18,39 +19,40 @@
 		  "Schorpion",
 		  "Boogschutter"]
 		
-				//bepalening sterrenbeeld
+        //bepalening sterrenbeeld
+        var zodiac =""
 		if((month == 1 && day <= 20) || (month == 12 && day >=22)) {
-			document.getElementById('sterrenbeeld').innerHTML =  zodiacSigns[0];} 
+			zodiac =  zodiacSigns[0];} 
 		else
 		if ((month == 1 && day >= 21) || (month == 2 && day <= 18)) {
-			document.getElementById('sterrenbeeld').innerHTML =  zodiacSigns[1];}
+			zodiac =  zodiacSigns[1];}
 		else
 		if((month == 2 && day >= 19) || (month == 3 && day <= 20)) {
-			document.getElementById('sterrenbeeld').innerHTML =   zodiacSigns[2];}
+			zodiac =   zodiacSigns[2];}
 		else
 		if((month == 3 && day >= 21) || (month == 4 && day <= 20)) {
-			document.getElementById('sterrenbeeld').innerHTML =   zodiacSigns[3];}
+			zodiac =   zodiacSigns[3];}
 		else
 		if((month == 4 && day >= 21) || (month == 5 && day <= 20)) {
-			document.getElementById('sterrenbeeld').innerHTML =   zodiacSigns[4];}
+			zodiac =   zodiacSigns[4];}
 		else
 		if((month == 5 && day >= 21) || (month == 6 && day <= 20)) {
-			document.getElementById('sterrenbeeld').innerHTML =   zodiacSigns[5];}
+			zodiac =   zodiacSigns[5];}
 		else
 		if((month == 6 && day >= 21) || (month == 7 && day <= 22)) {
-			document.getElementById('sterrenbeeld').innerHTML =   zodiacSigns[6];}
+			zodiac =   zodiacSigns[6];}
 		else
 		if((month == 7 && day >= 23) || (month == 8 && day <= 23)) {
-			document.getElementById('sterrenbeeld').innerHTML =   zodiacSigns[7];}
+			zodiac =   zodiacSigns[7];}
 		else
 		if((month == 8 && day >= 24) || (month == 9 && day <= 23)) {
-			document.getElementById('sterrenbeeld').innerHTML =   zodiacSigns[8];}
+			zodiac =   zodiacSigns[8];}
 		else
 		if((month == 9 && day >= 24) || (month == 10 && day <= 23)) {
-			document.getElementById('sterrenbeeld').innerHTML =   zodiacSigns[9];}
+			zodiac =   zodiacSigns[9];}
 		else
 		if((month == 10 && day >= 24) || (month == 11 && day <= 22)) {
-			document.getElementById('sterrenbeeld').innerHTML =   zodiacSigns[10];}
+			zodiac =   zodiacSigns[10];}
 		else
 		if((month == 11 && day >= 23) || (month == 12 && day <= 21)) {
-			document.getElementById('sterrenbeeld').innerHTML =   zodiacSigns[11];}
+            zodiac =   zodiacSigns[11];}
