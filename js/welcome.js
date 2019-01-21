@@ -16,7 +16,41 @@ window.onload = function () {
     buttonBottom.addEventListener('click', function () {
         submitButton(buttonBottom)
     });
-
+    var loginnm = document.getElementById('login_email');
+    loginnm.addEventListener('keypress', function (e) {
+        var key = e.which || e.keyCode;
+        if (key === 13) { // 13 is enter
+            submitButton(buttonBottom);
+        }
+    });
+    var loginpw = document.getElementById('login_pw');
+    loginpw.addEventListener('keypress', function (e) {
+        var key = e.which || e.keyCode;
+        if (key === 13) { // 13 is enter
+            submitButton(buttonBottom);
+        }
+    });
+    var inmail = document.getElementById('email');
+    inmail.addEventListener('keypress', function (e) {
+        var key = e.which || e.keyCode;
+        if (key === 13) { // 13 is enter
+            submitButton(buttonBottom);
+        }
+    });
+    var pw1 = document.getElementById('wachtwoord1');
+    pw1.addEventListener('keypress', function (e) {
+        var key = e.which || e.keyCode;
+        if (key === 13) { // 13 is enter
+            submitButton(buttonBottom);
+        }
+    });
+    var pw2 = document.getElementById('wachtwoord2');
+    pw2.addEventListener('keypress', function (e) {
+        var key = e.which || e.keyCode;
+        if (key === 13) { // 13 is enter
+            submitButton(buttonBottom);
+        }
+    });
 
 
 };
@@ -114,7 +148,10 @@ function submitButton(bottom) {
                 scrumlib.save();
 
                 console.log(scrumlib.getAllDatasets());
-                // Hieronder veranderen van pagina.
+                localStorage.setItem("ingelogd", jnewobject[0]._id);
+                localStorage.setItem("switchup", "1");
+
+                window.open("mijnprofiel.html", "_self");
             }
         }
     }

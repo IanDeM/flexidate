@@ -40,7 +40,6 @@ body {
 
 #manwoman {
     padding-top: 7%;
-    padding-left: 20%;
 }
 
 #containerLogin {
@@ -231,7 +230,6 @@ header li, li {
         display: list-item;
         padding: 10px 10px 10px 0;
     }
-    #containerLogin li {display: inline-block;}
 
     #contact li {
         display: inline;
@@ -252,8 +250,6 @@ header li, li {
         display: list-item;
         float: left;
     }
-    #containerLogin li {display: inline-block;}
-    #nicknameClass li {display: inline-block;}
 }
 
 .btn_14 {
@@ -577,17 +573,3 @@ footer {
     border: 1px solid black;
 }
 
-input[type="file"] {
-    display: none;
-}
-.custom-file-upload {
-    border: 1px solid #ccc;
-    display: inline-block;
-    padding: 6px 12px;
-    cursor: pointer;
-    
-}
-.custom-file-upload:hover {
-    background-color: rgba(78, 96, 120, 0.2);
-    color: white;
-}

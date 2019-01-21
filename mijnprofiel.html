@@ -9,7 +9,7 @@
 
       
 </head>
-<body>
+<body class="footerOverflow">
 <script src="js/jquery.min.js"></script>
 <script async src="js/flexi_scrum.min.js"></script>
 
@@ -23,18 +23,28 @@
         <!--header right opvulling kleur en knop-->
         <aside id="menuTopRight">
             <!--<button id="deKnop14b">Inschrijven</button>-->
+            <nav>
+                <ul>                    
+                    <li><button id="deKnop17" onclick="window.location.href='profielen.html'">Overzicht</button></li>                    
+                    <li><button id="deKnop18">Uitloggen</button></li>
+                    <li><button id="uitschrijven">Uitschrijven</button></li>
+                </ul>
+            </nav>
+            <!-- <button id="deKnop17" onclick="window.location.href='profielen.html'">Terug naar overzicht</button>
+            <button id="uitschrijven">Uitschrijven</button>
+            <button id="deKnop18">Uitloggen</button> -->
         </aside>
     </header>
     <!--end header-->
 
     <!--midden twee kolommen met links fade en rechts gegevensvenster-->
-    <div id="midden">
+    <div id="midden" >
         <!--kolom1 fadekleur, manWoman logo -->
         <div id="kolom1">
 
         </div>
         <!--kolom2 gegevensvenster-->
-        <div id="kolom2">
+        <div id="kolom2" >
             <div id="kolom2a">
                 <!-- mogelijkheid tot deleten van het profiel-->
                 <p hidden>ID:<input type="text" id="_id" value="" ></p>
@@ -61,30 +71,45 @@
 				<option value="grijsgroen">grijsgroen </option>
 				<option value="groen-grijs">groengrijs </option>
 				</select>
-				</p>
+                </p>
+                <p>Haarkleur:
+                    <select name="haarkleur" id="haarkleur"  title="Kies haarkleur"  class="required">
+                    <option value="">----Kies Haarkleur----</option>
+                    <option value="blond">blond </option>
+                    <option value="bruin">bruin </option>
+                    <option value="zwart">zwart </option>
+                    <option value="rood">rood </option>
+                    <option value="andere">andere </option>
+                    </select>
+                    </p>
                 <p>Grootte (in cm): <input type="text" id="grootte" value="" ></p>
                 <p>Gewicht (in kg): <input type="text" id="gewicht" value="" ></p>
                 <p>Huidig Wachtwoord: <input type="password" id="wachtwoord" value="" readonly></p>
 				<p>Nieuw Wachtwoord: <input type="password" id="wachtwoordNieuw" value=""></p>
-				<p>Wachtwoord Bevestigen: <input type="password" id="wachtwoordBevestigd" value=""></p>
-                <button id="opslaan">Opslaan</button>
-				<!--VWI-->
-				<button id="uitschrijven">Uitschrijven</button>
-                <!--VWI-->
-                <button onclick="window.location.href='profielen.html'">Terug naar overzicht Profielen</button>
+                <p>Wachtwoord Bevestigen: <input type="password" id="wachtwoordBevestigd" value=""></p>
             </div>
             <div id="kolom2b">
                 <!-- afbeelding eventueel veranderen naar iets specifiek -->
                 <!--<img id="manwoman" src="img/man-woman-symbol.png">-->
 
                 <div id="kader">
-                    <img id="foto" src=""  alt="profiel afbeelding" width="100px;">
                     <!-- hier de foto vanuit de json gegevens -->
+                    <img id="foto" src=""  alt="profiel afbeelding" width="100px;">
+                    <!-- afbeelding  veranderen naar iets specifiek -->
+                    <label class="custom-file-upload">
+                    <input type="file" id="myFile" size="50" onchange="myFunction()" >
+                    Upload
+                    </label>
                 </div>
                 <br>
                 <div id="nicknameClass">
                     <!-- hier komt de nickname-->
-                    <input type="text" id="nickname" value="">
+                    <input type="text" id="nickname" value="" placeholder="nickname">
+                    <nav>
+                            <ul>                    
+                                <li><button id="opslaan" class="btn_14">Wijzigingen opslaan</button></li>                                                                       
+                            </ul>
+                        </nav>
                 </div>
             </div>
         </div>
@@ -93,7 +118,11 @@
         </div>
         <!--end midden-->
     </div>
-    <footer id="footer"><p>Copyright</p></p></footer>
+    <div id="voetje"><footer id="footer">
+        <p>Copyright
+        <button id="buttonMail" class="btn_14">Contact Webmaster</button></p>
+    </footer>
+</div>
 </div>
 
 

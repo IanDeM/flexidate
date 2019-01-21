@@ -7,7 +7,7 @@
     <script src="js/index.js"></script>    
     <!--<script src="https://code.jquery.com/jquery-1.10.2.js"></script>-->
 </head>
-<body>
+<body class="bodyProfielen">
 <script src="js/jquery.min.js"></script>
 <script async src="js/flexi_scrum.min.js"></script>
 
@@ -20,8 +20,12 @@
         <section id="banner"></section>
         <!--header right opvulling kleur en knop-->
         <aside id="menuTopRight">
-            <button id="deKnop17">Mijn profiel</button>
-            <button id="deKnop18">Uitloggen</button>
+            <nav>
+                <ul>                    
+                    <li><button id="deKnop17">Mijn profiel</button></li>                    
+                    <li><button id="deKnop18">Uitloggen</button></li>                    
+                </ul>
+            </nav>            
         </aside>
     </header>
     <!--end header-->
@@ -29,58 +33,58 @@
     <div id="midden">
 
         <div id="kolom1">
-            <button onclick="search_open()" id="openSearch"><img src="img/searchButton.png" id="searchButton"></button>
-            <button onclick="search_close()" id="closeSearch" style="display:none">X</button>
+            <button onclick="search_open()" id="openSearch" style="float:left;"">>></button>
+            <button onclick="search_close()" id="closeSearch" style="display:none; float:right;"><<</button>
             <div class="nav" id="search" style="display:none">
 
-                <ul>
-                    <li>
-                        <p id="eersteZoek"> <label>zoek op index (getal) </label><input type="text" name="zoek_index" id="zoek_index">
-
-                        </p>
-                    </li >
-                    <li>
-                        <p> <label>zoek op id </label><input type="text" name="zoek_id" id="zoek_id">
-
-                        </p>
+                <ul id="eersteZoek">
+                    <!-- <li>
+                        <label>zoek op index (getal) </label><br><input type="text" name="zoek_index" id="zoek_index">                        
                     </li>
+                    <li>
+                        <label>zoek op id </label><br><input type="text" name="zoek_id" id="zoek_id">
+                    </li> -->
                     <li id="zVoornaam">
-                        <p ><label>zoek op voornaam </label><input type="text" name="zoek_voornaam" id="zoek_voornaam">
-                            <label>Fuzzy search <input type="checkbox" name="voornaam_fuzzy"
+                        <label>zoek op voornaam </label><br><input type="text" name="zoek_voornaam" id="zoek_voornaam"><br>
+                        <label>Fuzzy search <input type="checkbox" name="voornaam_fuzzy"
                                                        id="voornaam_fuzzy"></label>
-
-                        </p>
                     </li>
                     <li id="zSexe">
-                        <p ><label>kies sexe </label><select name="zoek_sexe" id="zoek_sexe">
+                        <label>kies sexe </label><br>
+                        <select name="zoek_sexe" id="zoek_sexe">
                             <option value="" selected>beide sexes</option>
                             <option>v</option>
                             <option>m</option>
                         </select>
-
-                        </p>
                     </li>
-                    <li id="zHaarkleur"><p><label>zoek haarkleur </label><input type="text" name="zoek_haarkleur" id="zoek_haarkleur">
-
-                    </p></li>
-                    <li id="zGrootte"><p><label>kleiner dan </label><input type="text" name="zoek_grootte" id="zoek_grootte"
+                    <li id="zHaarkleur">
+                        <label>zoek haarkleur </label><br>
+                        <input type="text" name="zoek_haarkleur" id="zoek_haarkleur">
+                    </li>
+                    <li id="zOogkleur">
+                        <label>zoek oogkleur </label><br>
+                        <input type="text" name="zoek_oogkleur" id="zoek_oogkleur">
+                    </li>
+                    <li id="zGrootte">
+                        <label>kleiner dan </label><br><input type="text" name="zoek_grootte" id="zoek_grootte"
                                                              placeholder="grootte">
+                    </li>
 
-                    </p></li>
-
-                    <li id="zGebdatum"><p><label>geboortedatum vroeger dan (yyyy-mm-dd)</label><input type="text" name="zoek_datum"
-                                                                                       id="zoek_datum"
-                                                                                       placeholder="datum (yyyy-mm-dd)">
-
-                    </p></li>
+                    <li id="zGebdatum">
+                        <label>geboortedatum vroeger dan</label><br>
+                        <input type="date" name="zoek_datum"
+                                                            id="zoek_datum"
+                                                            placeholder="datum (yyyy-mm-dd)">
+                    </li>
                     <li>
                         <button type=button id="deKnop16">Find your love</button>
                     </li>
+                    <br>
                     <li>
                         <button type=button id="lucky">I feel Lucky</button>
                     </li>
 					
-                    <li id="boodschapZoekMogelijkheden">
+                    <li id="boodschapZoekMogelijkheden"><br>
                         <p>Vul je profiel verder aan voor meer zoekmogelijkheden</p>
                     </li>
 					<!--VWI-->
@@ -101,17 +105,15 @@
         <!--NIEUWE CODE-->
         <p id="voortgangProfiel"></p>
         <div id="progressBar">
-            <div id="progressBarInside"><div id="barText"></div></div>
+            <div id="progressBarInside"><span id="barText"></span></div>
         </div>
         <!--END NIEUWE CODE-->
     </div>
 </div>
 <!--ERIC DEBUT-->
-<footer id="footer">
-	<p>Copyright
-	<button id="buttonMail">Contact Webmaster</button>
-	</p>
-	</p>
+    <footer id="footer">
+        <p>Copyright
+        <button id="buttonMail" class="btn_14">Contact Webmaster</button></p>
 	</footer>
 </div>
 <!--ERIC FIN-->

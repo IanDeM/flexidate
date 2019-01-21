@@ -2,12 +2,11 @@ window.onload = function () {
     //console.log(scrumlib.getAllDatasets());
     //console.log("js geladen");
 
-    // var zoek_id = document.getElementById('zoek_id');
-    // var zoek_index = document.getElementById('zoek_index');
+    var zoek_id = document.getElementById('zoek_id');
+    var zoek_index = document.getElementById('zoek_index');
     var zoek_voornaam = document.getElementById('zoek_voornaam');
     var zoek_sexe = document.getElementById('zoek_sexe');
     var zoek_haarkleur = document.getElementById('zoek_haarkleur');
-    var zoek_oogkleur = document.getElementById('zoek_oogkleur');
     var zoek_grootte = document.getElementById('zoek_grootte');
     var zoek_datum = document.getElementById('zoek_datum');
 
@@ -33,7 +32,7 @@ window.onload = function () {
 //* ERIC FIN    
 	
     var loggedUser = scrumlib.getDatasetById(localStorage.getItem("ingelogd"));
-
+    setSearchVisibility(loggedUser);
 	//console.log(scrumlib.getDatasetById(localStorage.getItem("ingelogd")));
     /*toonVoortgangProfiel(scrumlib.getDatasetById(localStorage.getItem("ingelogd")));*/
 
@@ -74,32 +73,33 @@ window.onload = function () {
 
 
     var deKnop16 = document.getElementById('deKnop16');
-    setSearchVisibility(loggedUser, deKnop16);
+
 
     deKnop16.addEventListener('click', function () {
 
         var aAllDatasets = scrumlib.getAllDatasets();
        // console.log(aAllDatasets);
-        // var idSet = scrumlib.getDatasetById(zoek_id.value);
+        var idSet = scrumlib.getDatasetById(zoek_id.value);
         var filteredSet = aAllDatasets;
 
-        // if (idSet.length !== 0) {
-        //     filteredSet = filterSearchResults(aAllDatasets, idSet);
-        // }
+        if (idSet.length !== 0) {
+            filteredSet = filterSearchResults(aAllDatasets, idSet);
+        }
 
         var fuzzy = document.getElementById('voornaam_fuzzy').checked;
         var match = (fuzzy === true) ? "~" : "=";
         var condition = {voornaam: {"waarde": zoek_voornaam.value, "match": match}};
         var voornaamSet = scrumlib.getDatasetsByConditions(condition);
-        //console.log(voornaamSet);
+        console.log(voornaamSet);
 
         if ((voornaamSet.length !== 0 || zoek_voornaam.value !== "") /*&& (fuzzy.disabled===false) && (zoek_voornaam.disabled === false)*/) {
             filteredSet = filterSearchResults(filteredSet, voornaamSet);
         }
-        // var indexSet = scrumlib.getDatasetByIndex(zoek_index.value);
-        // if (zoek_index.value !== "" && indexSet !== undefined) {
-        //     filteredSet = filterSearchResults(filteredSet, indexSet);
-        // }
+
+        var indexSet = scrumlib.getDatasetByIndex(zoek_index.value);
+        if (zoek_index.value !== "" && indexSet !== undefined) {
+            filteredSet = filterSearchResults(filteredSet, indexSet);
+        }
 
 
         var zoek = zoek_sexe.value;
@@ -114,11 +114,6 @@ window.onload = function () {
         var haarkleurSet = scrumlib.getDatasetsByConditions(condition);
         if (haarkleurSet.length !== 0 || zoek_haarkleur.value !== "") {
             filteredSet = filterSearchResults(filteredSet, haarkleurSet);
-        }
-        condition = {oogkleur: {"waarde": zoek_oogkleur.value, "match": "~"}};
-        var oogkleurSet = scrumlib.getDatasetsByConditions(condition);
-        if (oogkleurSet.length !== 0) {
-            filteredSet = filterSearchResults(filteredSet, oogkleurSet);
         }
 
         condition = {grootte: {"waarde": zoek_grootte.value, "match": "<"}};
@@ -245,7 +240,7 @@ function clickPhoto(local_id) {
 
 
 
-function setSearchVisibility(loggedUser, zoekKnop) {
+function setSearchVisibility(loggedUser) {
     var oUser = loggedUser[0];
     var eVoornaam = document.getElementById('zoek_voornaam');
     var zVoornaam = document.getElementById('zVoornaam');
@@ -254,8 +249,6 @@ function setSearchVisibility(loggedUser, zoekKnop) {
     var zSexe = document.getElementById('zSexe');
     var eHaarkleur = document.getElementById('zoek_haarkleur');
     var zHaarkleur = document.getElementById('zHaarkleur');
-    var eOogkleur = document.getElementById('zoek_oogkleur');
-    var zOogkleur = document.getElementById('zOogkleur');
     var eKleiner = document.getElementById('zoek_grootte');
     var zGrootte = document.getElementById('zGrootte');
     var eGebDatum = document.getElementById('zoek_datum');
@@ -277,11 +270,7 @@ function setSearchVisibility(loggedUser, zoekKnop) {
         eHaarkleur.style.display = "none";
         zHaarkleur.style.display = "none";
     }
-    if (oUser.oogkleur === "") {
-        eOogkleur.style.display = "none";
-        zOogkleur.style.display = "none";
-    }
-    if (oUser.grootte === 0 || oUser.grootte === "") {
+    if (oUser.grootte === 0) {
         eKleiner.style.display = "none";
         zGrootte.style.display = "none";
     }
@@ -289,8 +278,6 @@ function setSearchVisibility(loggedUser, zoekKnop) {
         eGebDatum.style.display = "none";
         zGebDatum.style.display = "none";
     }
-    if (oUser.voornaam === "" && oUser.sexe === "" && oUser.haarkleur === "" && oUser.oogkleur === "" && (oUser.grootte === 0 || oUser.grootte === "") &&
-        oUser.geboortedatum === "") {zoekKnop.style.display ="none";}
 }
 
 function filterSearchResults(firstArray, secondArray) {
@@ -332,9 +319,6 @@ function setVoortgangProfiel(loggedUser) {
         ingevuld++;
     }
     if (oUser.haarkleur !== "") {
-        ingevuld++;
-    }
-    if (oUser.oogkleur !== "") {
         ingevuld++;
     }
     if (oUser.nickname !== "") {

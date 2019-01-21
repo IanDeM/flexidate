@@ -8,7 +8,7 @@
     <script type="text/javascript" src="js/profielen.json"></script>
             
 </head>
-<body>
+<body class="footerOverflow">
 <script src="js/jquery.min.js"></script>
 <script async src="js/flexi_scrum.min.js"></script>
 
@@ -22,18 +22,28 @@
         <!--header right opvulling kleur en knop-->
         <aside id="menuTopRight">
             <!--<button id="deKnop14b">Inschrijven</button>-->
+            <nav>
+                <ul>                    
+                    <li><button id="deKnop17" onclick="window.location.href='profielen.html'">Overzicht</button></li>                    
+                    <li><button id="deKnop18">Uitloggen</button></li>                    
+                </ul>
+            </nav> 
+            
+                
+                
+            
         </aside>
     </header>
     <!--end header-->
 
     <!--midden twee kolommen met links fade en rechts gegevensvenster-->
-    <div id="midden">
+    <div id="midden" >
         <!--kolom1 fadekleur, manWoman logo -->
         <div id="kolom1">
 
         </div>
         <!--kolom2 gegevensvenster-->
-        <div id="kolom2">
+        <div id="kolom2" >
             <div id="kolom2a">
                 <!-- mogelijkheid tot deleten van het profiel-->
                 <p hidden>ID:<input type="text" id="_id" value="" ></p>
@@ -46,17 +56,15 @@
                 <p>Beroep: <input type="text" id="beroep" value="" disabled></p>
                 <p>Geslacht:<input type="text" id="sexe" value="" disabled>				
                 </p>
-                <p>Oogkleur:<input type="text" id="oogkleur" value="" disabled></p>				
+                <p>Oogkleur:<input type="text" id="oogkleur" value="" disabled></p>	
+                <p>Haarkleur:<input type="text" id="haarkleur" value="" disabled></p>				
                 <p>Grootte (in cm): <input type="text" id="grootte" value="" disabled></p>
                 <p>Gewicht (in kg): <input type="text" id="gewicht" value="" disabled ></p>
                 <p hidden>Huidig Wachtwoord: <input type="password" id="wachtwoord" value="" readonly></p>
 				<p hidden>Nieuw Wachtwoord: <input type="password" id="wachtwoordNieuw" value=""></p>
                 <p hidden>Wachtwoord Bevestigen: <input type="password" id="wachtwoordBevestigd" value=""></p>
-                <button onclick="window.location.href='profielen.html'">Terug naar overzicht Profielen</button>               
-                <button id="opslaan" hidden>Opslaan</button>
-				<!--VWI-->
-				<button id="uitschrijven" hidden>Uitschrijven</button>
-				<!--VWI-->
+                               
+                
             </div>
             <div id="kolom2b">
                 <!-- afbeelding eventueel veranderen naar iets specifiek -->
@@ -69,26 +77,46 @@
                 <br>
                 <div id="nicknameClass">
                     <!-- hier komt de nickname-->
-                    <input type="text" id="nickname" value="" disabled>
-
-                    
+                    <input type="text" id="nickname" value="" disabled>                    
                 </div>
             </div>
+            <!-- YOERIK contactformuliertje in een profielpagina-->
+            <div id="contact">
+                <form action="#">
+                    <fieldset>
+                        <legend>Stuur me een leuk berichtje</legend> 
+                        <textarea id="bericht" name="bericht" placeholder="Maak er iets moois van ;-) " ></textarea>
+                        <br>
+                        <nav>
+                            <ul>                                       
+                                <li><button class="btn_14" onclick="mailMe()">Verzenden</button></li>
+                            </ul>
+                        </nav>
+                    </fieldset>
+                </form>      
+            </div>
+            <!-- YOERIK EINDE contactformuliertje in een profielpagina-->
+            
         </div>
         <div id="kolom3">
-
+                
         </div>
+        
         <!--end midden-->
     </div>
-    <footer id="footer"><p>Copyright</p></p></footer>
+    <footer id="footer">
+        <p>Copyright
+        <button id="buttonMail" class="btn_14">Contact Webmaster</button></p>
+    </footer>
 </div>
 
 
-<!--<script defer>
-    window.onload = function () {
-        console.log(scrumlib.getAllDatasets());
-
+<script>
+    function mailMe() {
+        var mail = document.getElementById("mailadres").value
+        var link = 'mailto:' + mail + '?subject=Message from ' +'&body='+document.getElementById('bericht').value;
+        window.location.href = link;
     }
-</script>-->
+</script>
 </body>
 </html>

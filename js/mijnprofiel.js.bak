@@ -3,7 +3,7 @@ var login_email, login_pw;
 
 window.onload = function () {
     libversie = document.getElementById('libversie');
-    var local_ingelogd = localStorage['detailID'];
+    var local_ingelogd = localStorage['ingelogd'];
 //alert(local_ingelogd);
     console.log(scrumlib.getDatasetById(local_ingelogd));
     var jobject = scrumlib.getDatasetById(local_ingelogd);
@@ -17,91 +17,78 @@ window.onload = function () {
         submitMail()
     });
 
-
     //-------Bepalen zodiac------//
     //var datums
-    var datum = new Date(jobject[0].geboortedatum);
-    var day = datum.getDate();
-    var month = datum.getMonth() + 1;
-    var year = datum.getFullYear();
-    var leeftijd = (calculate_age(new Date(year, month, day)));
+    if (jobject[0].length = !0) {
+        var datum = new Date(jobject[0].geboortedatum);
+        var day = datum.getDate();
+        var month = datum.getMonth() + 1;
 
+        //var sterrenbeelden
+        var zodiacSigns = [
+            "Steenbok",
+            "Waterman",
+            "Vissen",
+            "Ram",
+            "Stier",
+            "Tweelingen",
+            "Kreeft",
+            "Leeuw",
+            "Maagd",
+            "Weegschaal",
+            "Schorpion",
+            "Boogschutter"]
 
-    //var sterrenbeelden
-    var zodiacSigns = [
-        "Steenbok",
-        "Waterman",
-        "Vissen",
-        "Ram",
-        "Stier",
-        "Tweelingen",
-        "Kreeft",
-        "Leeuw",
-        "Maagd",
-        "Weegschaal",
-        "Schorpion",
-        "Boogschutter"]
-
-    //bepalening sterrenbeeld
-    var zodiac = ""
-    if ((month == 1 && day <= 20) || (month == 12 && day >= 22)) {
-        zodiac = zodiacSigns[0];
+        //bepalening sterrenbeeld
+        var zodiac = ""
+        if ((month == 1 && day <= 20) || (month == 12 && day >= 22)) {
+            zodiac = zodiacSigns[0];
+        }
+        else if ((month == 1 && day >= 21) || (month == 2 && day <= 18)) {
+            zodiac = zodiacSigns[1];
+        }
+        else if ((month == 2 && day >= 19) || (month == 3 && day <= 20)) {
+            zodiac = zodiacSigns[2];
+        }
+        else if ((month == 3 && day >= 21) || (month == 4 && day <= 20)) {
+            zodiac = zodiacSigns[3];
+        }
+        else if ((month == 4 && day >= 21) || (month == 5 && day <= 20)) {
+            zodiac = zodiacSigns[4];
+        }
+        else if ((month == 5 && day >= 21) || (month == 6 && day <= 20)) {
+            zodiac = zodiacSigns[5];
+        }
+        else if ((month == 6 && day >= 21) || (month == 7 && day <= 22)) {
+            zodiac = zodiacSigns[6];
+        }
+        else if ((month == 7 && day >= 23) || (month == 8 && day <= 23)) {
+            zodiac = zodiacSigns[7];
+        }
+        else if ((month == 8 && day >= 24) || (month == 9 && day <= 23)) {
+            zodiac = zodiacSigns[8];
+        }
+        else if ((month == 9 && day >= 24) || (month == 10 && day <= 23)) {
+            zodiac = zodiacSigns[9];
+        }
+        else if ((month == 10 && day >= 24) || (month == 11 && day <= 22)) {
+            zodiac = zodiacSigns[10];
+        }
+        else if ((month == 11 && day >= 23) || (month == 12 && day <= 21)) {
+            zodiac = zodiacSigns[11];
+        }
     }
-    else if ((month == 1 && day >= 21) || (month == 2 && day <= 18)) {
-        zodiac = zodiacSigns[1];
-    }
-    else if ((month == 2 && day >= 19) || (month == 3 && day <= 20)) {
-        zodiac = zodiacSigns[2];
-    }
-    else if ((month == 3 && day >= 21) || (month == 4 && day <= 20)) {
-        zodiac = zodiacSigns[3];
-    }
-    else if ((month == 4 && day >= 21) || (month == 5 && day <= 20)) {
-        zodiac = zodiacSigns[4];
-    }
-    else if ((month == 5 && day >= 21) || (month == 6 && day <= 20)) {
-        zodiac = zodiacSigns[5];
-    }
-    else if ((month == 6 && day >= 21) || (month == 7 && day <= 22)) {
-        zodiac = zodiacSigns[6];
-    }
-    else if ((month == 7 && day >= 23) || (month == 8 && day <= 23)) {
-        zodiac = zodiacSigns[7];
-    }
-    else if ((month == 8 && day >= 24) || (month == 9 && day <= 23)) {
-        zodiac = zodiacSigns[8];
-    }
-    else if ((month == 9 && day >= 24) || (month == 10 && day <= 23)) {
-        zodiac = zodiacSigns[9];
-    }
-    else if ((month == 10 && day >= 24) || (month == 11 && day <= 22)) {
-        zodiac = zodiacSigns[10];
-    }
-    else if ((month == 11 && day >= 23) || (month == 12 && day <= 21)) {
-        zodiac = zodiacSigns[11];
-    }
-
     if (jobject.length != 0) {
         // alert("gevonden");
         document.getElementById("_id").value = jobject[0]._id;
         document.getElementById("familienaam").value = jobject[0].familienaam;
         document.getElementById("naam").value = jobject[0].voornaam;
         document.getElementById("geboortedatum").value = jobject[0].geboortedatum;
-
-        document.getElementById("leeftijd").value = leeftijd;
-
         document.getElementById("mailadres").value = jobject[0].email;
         document.getElementById("nickname").value = jobject[0].nickname;
         document.getElementById("foto").src = "img/" + jobject[0].foto;
         document.getElementById("beroep").value = jobject[0].beroep;
-        //document.getElementById("sexe").value = jobject[0].sexe;
-        if (jobject[0].sexe == "m") {
-            document.getElementById("sexe").value = "Man";
-        }
-        if (jobject[0].sexe == "v") {
-            document.getElementById("sexe").value = "Vrouw";
-        }
-
+        document.getElementById("sexe").value = jobject[0].sexe;
         document.getElementById("oogkleur").value = jobject[0].oogkleur;
         document.getElementById("haarkleur").value = jobject[0].haarkleur;
         document.getElementById("grootte").value = jobject[0].grootte;
@@ -113,18 +100,17 @@ window.onload = function () {
     else {
         alert("Onbestaand profiel !!!");
     }
-    /*
+
     var knop_update = document.getElementById('opslaan');
     knop_update.addEventListener('click', opslaan);
 
-        //VWI
-        var knop_uitschrijf = document.getElementById('uitschrijven');
-        knop_uitschrijf.addEventListener('click', uitschrijf);
+    //VWI
+    var knop_uitschrijf = document.getElementById('uitschrijven');
+    knop_uitschrijf.addEventListener('click', uitschrijf);
 
-        //VWI
-        */
-};
-// einde windows onload
+    //VWI
+
+} // einde windows onload
 
 
 // opslaan van de aangepaste gegevens in de local storage
@@ -179,6 +165,14 @@ function opslaan() {
     }
 
 
+    /*	if (document.getElementById("wachtwoordNieuw").value == "")
+        {
+            updateMap.wachtwoord = document.getElementById("wachtwoord").value;
+        }
+        else
+        {
+            updateMap.wachtwoord = document.getElementById("wachtwoordNieuw").value;
+        }	*/
     // wegschrijven van de data naar de local storage
     scrumlib.updateDataset(localStorage.getItem("_id", document.getElementById('_id').value), updateMap);
 
@@ -202,17 +196,6 @@ function uitschrijf() {
     window.open("index.html", "_self");
 }
 
-//VWI
-
-/* Bereken de leeftijd */
-
-function calculate_age(dob) {
-    var diff_ms = Date.now() - dob.getTime();
-    var age_dt = new Date(diff_ms);
-
-    return Math.abs(age_dt.getUTCFullYear() - 1970);
-}
-
 function submitLogoff() {
     console.log("submitLogoff");
 
@@ -226,9 +209,5 @@ function submitMail() {
     location.href = "mailWebmaster.html";
 }
 
-function mailMe() {
-    console.log(document.getElementById("mailadres").value);
-    var mail = document.getElementById("mailadres").value;
-    var link = 'mailto:' + mail + '?subject=Message from ' + '&body=' + document.getElementById('bericht').value;
-    window.location.href = link;
-}
+//VWI
+
